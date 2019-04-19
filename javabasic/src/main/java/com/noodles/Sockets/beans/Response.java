@@ -1,6 +1,6 @@
 package com.noodles.Sockets.beans;
 
-import noodles.Sockets.HttpServer;
+import com.noodles.Sockets.HttpServer;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,6 +1,6 @@
 package com.noodles.regular;
 
-import noodles.file.FileUtil;
+import com.noodles.file.FileUtil;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

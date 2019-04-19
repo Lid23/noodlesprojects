@@ -1,7 +1,9 @@
 package com.noodles.Sockets;
 
-import noodles.Sockets.beans.Request;
-import noodles.Sockets.beans.Response;
+
+import com.noodles.Sockets.beans.Request;
+import com.noodles.Sockets.beans.Response;
+import org.jsoup.Connection;
 
 import java.io.IOException;
 import java.io.InputStream;

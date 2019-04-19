@@ -1,6 +1,6 @@
 package com.noodles.file;
 
-import noodles.file.nio.FileNioUtil;
+import com.noodles.file.nio.FileNioUtil;
 
 import java.io.*;
 

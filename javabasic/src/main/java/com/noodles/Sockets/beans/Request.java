@@ -1,6 +1,6 @@
 package com.noodles.Sockets.beans;
 
-import noodles.Sockets.common.TestUtil;
+import com.noodles.Sockets.common.TestUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

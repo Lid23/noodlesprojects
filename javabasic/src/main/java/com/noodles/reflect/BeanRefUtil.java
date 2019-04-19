@@ -1,8 +1,8 @@
 package com.noodles.reflect;
 
 
-import noodles.reflect.bean.UserBean;
-import noodles.utils.PrintUtil;
+import com.noodles.reflect.bean.UserBean;
+import com.noodles.utils.PrintUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

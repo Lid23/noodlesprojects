@@ -1,6 +1,6 @@
 package com.noodles.concurrent;
 
-import noodles.concurrent.threads.LiftOff;
+import com.noodles.concurrent.threads.LiftOff;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

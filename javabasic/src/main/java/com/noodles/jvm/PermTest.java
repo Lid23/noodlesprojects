@@ -1,9 +1,9 @@
 package com.noodles.jvm;
 
+import com.noodles.cglib.SampleClass;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import noodles.cglib.SampleClass;
 
 import java.lang.reflect.Method;
 
