@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context">
+
+	<bean id="compactDisc" class="noodles.springaction.bean.SgtPeppers" />
+
+	<!--
+	<bean id="cdPlayer" class="noodles.springaction.bean.CDPlayer">
+		<constructor-arg ref="compactDisc"/>
+	</bean>
+	-->
+	<bean id="cdPlayer" class="noodles.springaction.bean.CDPlayer" c:compactDisc-ref="compactDisc" />
+	<bean id="cdPlayer1" class="noodles.springaction.bean.CDPlayer" c:_0-ref="compactDisc" />
+</beans>
