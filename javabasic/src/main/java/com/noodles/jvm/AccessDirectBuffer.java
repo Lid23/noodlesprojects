@@ -45,7 +45,7 @@ public class AccessDirectBuffer {
 	 */
 	public void bufferAccess(){
 		long startTime = System.currentTimeMillis();
-		
+
 		ByteBuffer b = ByteBuffer.allocate(10000);
 		for(int i=0; i<100000; i++){
 			for(int j=0; j<999; j++){
@@ -57,12 +57,12 @@ public class AccessDirectBuffer {
 			}
 			b.clear();
 		}
-		
+
 		long endTime = System.currentTimeMillis();
-		
+
 		System.out.println("testBufferWrite:" + (endTime - startTime));
 	}
-	
+
 	/**
 	 * 申请直接内存空间
 	 * 作者：KJ00019
@@ -99,8 +99,8 @@ public class AccessDirectBuffer {
 		AccessDirectBuffer accessDirectBuffer = new AccessDirectBuffer();
 		
 		/** 直接内存读写比堆内存读写快*/
-		// accessDirectBuffer.directAccess();
-		// accessDirectBuffer.bufferAccess();
+		accessDirectBuffer.directAccess();
+		accessDirectBuffer.bufferAccess();
 		
 		/** 内存空间申请时间对比*/
 		accessDirectBuffer.directAllocate();

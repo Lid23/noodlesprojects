@@ -24,9 +24,9 @@ public class GsonBasicUsage {
 		System.out.println("str = " + str);
 		
 		/**基本数据类型的生成*/
-		String jsonNumber = gson.toJson(100);       // 100
-		String jsonBoolean = gson.toJson(false);    // false
-		String jsonString = gson.toJson("String"); //"String"
+		String jsonNumber = gson.toJson(100);
+		String jsonBoolean = gson.toJson(false);
+		String jsonString = gson.toJson("String");
 		
 		System.out.println("jsonNumber = " + jsonNumber);
 		System.out.println("jsonBoolean = " + jsonBoolean);
@@ -122,8 +122,5 @@ class User{
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	
-	/**我行过许多地方的桥，看过许多次数的云，喝过许多种类的酒，却只爱过一个正当最好年龄的人。
-	 * */
 	
 }

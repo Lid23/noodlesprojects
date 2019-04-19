@@ -59,8 +59,8 @@ public class StackDemo {
     */
     public void maze(){
         //迷宫的定义
-        int m = 6;    // 迷宫的实际行
-        int n = 8;    //迷宫的实际列
+        int m = 6;
+        int n = 8;
     }
 }
 

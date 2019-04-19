@@ -4,6 +4,13 @@ import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 
+
+/**
+ *
+ * @author Eric
+ * @date 2019/04/19
+ *
+ * */
 public class JsonUtil {
 	
 	public static void main(String args[]){
