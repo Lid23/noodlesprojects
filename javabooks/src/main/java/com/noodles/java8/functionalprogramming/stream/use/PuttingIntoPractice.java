@@ -1,7 +1,7 @@
 package com.noodles.java8.functionalprogramming.stream.use;
 
-import nod.java8.commons.beans.Trader;
-import nod.java8.commons.beans.Transaction;
+import com.noodles.java8.beans.Trader;
+import com.noodles.java8.beans.Transaction;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ public class PuttingIntoPractice{
         Trader brian = new Trader("Brian","Cambridge");
 		
 		List<Transaction> transactions = Arrays.asList(
-            new Transaction(brian, 2011, 300), 
+            new Transaction(brian, 2011, 300),
             new Transaction(raoul, 2012, 1000),
             new Transaction(raoul, 2011, 400),
             new Transaction(mario, 2012, 710),	

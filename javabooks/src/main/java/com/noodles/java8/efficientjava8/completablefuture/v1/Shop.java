@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
-import static nod.java8.efficientjava8.completablefuture.Util.delay;
+import static com.noodles.java8.efficientjava8.completablefuture.Util.delay;
 
 public class Shop {
 

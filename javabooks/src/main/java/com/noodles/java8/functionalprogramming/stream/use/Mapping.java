@@ -1,20 +1,19 @@
 package com.noodles.java8.functionalprogramming.stream.use;
 
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
-import static nod.java8.commons.beans.Dish.menu;
 
 public class Mapping{
 
     public static void main(String...args){
 
         // map
-        List<String> dishNames =menu.stream()
+        List<String> dishNames = Dish.menu.stream()
                                      .map(Dish::getName)
                                      .collect(toList());
         System.out.println(dishNames);

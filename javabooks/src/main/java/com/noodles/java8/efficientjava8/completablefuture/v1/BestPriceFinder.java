@@ -1,6 +1,6 @@
 package com.noodles.java8.efficientjava8.completablefuture.v1;
 
-import nod.java8.efficientjava8.completablefuture.ExchangeService;
+import com.noodles.java8.efficientjava8.completablefuture.ExchangeService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +14,7 @@ public class BestPriceFinder {
     private final List<Shop> shops = Arrays.asList(new Shop("BestPrice"),
                                                    new Shop("LetsSaveBig"),
                                                    new Shop("MyFavoriteShop"),
-                                                   new Shop("BuyItAll")/*,
-                                                   new Shop("ShopEasy")*/);
+                                                   new Shop("BuyItAll"));
 
     private final Executor executor = Executors.newFixedThreadPool(shops.size(), new ThreadFactory() {
         @Override
@@ -72,10 +71,11 @@ public class BestPriceFinder {
         List<String> prices = priceFutures
                 .stream()
                 .map(CompletableFuture::join)
-                .map(price -> /*shop.getName() +*/ " price is " + price)
+                .map(price -> " price is " + price)
                 .collect(Collectors.toList());
         return prices;
     }
+
 
     public List<String> findPricesInUSDJava7(String product) {
         ExecutorService executor = Executors.newCachedThreadPool();

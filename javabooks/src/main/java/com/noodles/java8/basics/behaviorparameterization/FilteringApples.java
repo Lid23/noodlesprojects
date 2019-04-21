@@ -1,6 +1,6 @@
 package com.noodles.java8.basics.behaviorparameterization;
 
-import nod.java8.commons.beans.Apple;
+import com.noodles.java8.beans.Apple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,10 +34,13 @@ public class FilteringApples {
         System.out.println(weirdApples);
     }
     
-    /*
-    * @Author: Eric
+
+    /**
     * @Description: 过滤绿苹果
-    * @Date:2018/1/16 17:48
+    * @Param:
+    * @return:
+    * @Author: Eric
+    * @Date: 2019-04-21
     */
     public static List<Apple> filterGreenApples(List<Apple> appleList){
         List<Apple> result = new ArrayList<Apple>();
@@ -49,10 +52,12 @@ public class FilteringApples {
         return result;
     }
 
-    /*
+    /**
+    * @Description: 过滤重苹果
+    * @Param:
+    * @return:
     * @Author: Eric
-    * @Description:过滤重苹果
-    * @Date:2018/1/16 17:50
+    * @Date: 2019-04-21
     */
     public static List<Apple> filterHeavyApples(List<Apple> inventory){
         List<Apple> result = new ArrayList<>();

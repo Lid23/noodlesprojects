@@ -3,6 +3,7 @@ package com.noodles.java8.efficientjava8.completablefuture.v1;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+
 public class ShopMain {
 
   public static void main(String[] args) {

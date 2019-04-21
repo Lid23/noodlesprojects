@@ -1,7 +1,7 @@
 package com.noodles.java8.efficientjava8.completablefuture;
 
 
-import static nod.java8.efficientjava8.completablefuture.Util.delay;
+import static com.noodles.java8.efficientjava8.completablefuture.Util.delay;
 
 public class ExchangeService {
 

@@ -1,6 +1,6 @@
 package com.noodles.java8.basics.behaviorparameterization;
 
-import nod.java8.commons.beans.Apple;
+import com.noodles.java8.beans.Apple;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.noodles.java8.functionalprogramming.stream.datacollect;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
-import static nod.java8.commons.beans.Dish.menu;
 
 public class Partitioning {
 
@@ -19,15 +18,15 @@ public class Partitioning {
     }
 
     private static Map<Boolean, List<Dish>> partitionByVegeterian() {
-        return menu.stream().collect(partitioningBy(Dish::isVegetarian));
+        return Dish.menu.stream().collect(partitioningBy(Dish::isVegetarian));
     }
 
     private static Map<Boolean, Map<Dish.Type, List<Dish>>> vegetarianDishesByType() {
-        return menu.stream().collect(partitioningBy(Dish::isVegetarian, groupingBy(Dish::getType)));
+        return Dish.menu.stream().collect(partitioningBy(Dish::isVegetarian, groupingBy(Dish::getType)));
     }
 
     private static Object mostCaloricPartitionedByVegetarian() {
-        return menu.stream().collect(
+        return Dish.menu.stream().collect(
                 partitioningBy(Dish::isVegetarian,
                         collectingAndThen(
                                 maxBy(comparingInt(Dish::getCalories)),

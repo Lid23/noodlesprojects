@@ -1,8 +1,8 @@
 package com.noodles.java8.efficientjava8.completablefuture;
 
 
-import static nod.java8.efficientjava8.completablefuture.Util.delay;
-import static nod.java8.efficientjava8.completablefuture.Util.format;
+import static com.noodles.java8.efficientjava8.completablefuture.Util.delay;
+import static com.noodles.java8.efficientjava8.completablefuture.Util.format;
 
 public class Discount {
 

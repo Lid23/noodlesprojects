@@ -19,15 +19,18 @@ public class StrategyMain {
     }
 
     interface ValidationStrategy {
+
         public boolean execute(String s);
     }
 
     static private class IsAllLowerCase implements ValidationStrategy {
+        @Override
         public boolean execute(String s){
             return s.matches("[a-z]+");
         }
     }
     static private class IsNumeric implements ValidationStrategy {
+        @Override
         public boolean execute(String s){
             return s.matches("\\d+");
         }

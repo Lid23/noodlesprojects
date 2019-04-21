@@ -1,8 +1,8 @@
 package com.noodles.java8.basics.lambda;
 
-import nod.java8.commons.beans.Apple;
-import nod.java8.commons.beans.Fruit;
-import nod.java8.commons.beans.Orange;
+import com.noodles.java8.beans.Apple;
+import com.noodles.java8.beans.Fruit;
+import com.noodles.java8.beans.Orange;
 
 import java.util.Arrays;
 import java.util.HashMap;

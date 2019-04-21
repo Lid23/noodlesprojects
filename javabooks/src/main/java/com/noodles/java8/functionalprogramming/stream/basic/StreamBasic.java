@@ -1,6 +1,6 @@
 package com.noodles.java8.functionalprogramming.stream.basic;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.ArrayList;
 import java.util.Collections;

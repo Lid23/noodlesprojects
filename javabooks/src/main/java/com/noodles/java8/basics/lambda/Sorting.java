@@ -1,6 +1,6 @@
 package com.noodles.java8.basics.lambda;
 
-import nod.java8.commons.beans.Apple;
+import com.noodles.java8.beans.Apple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,6 +51,8 @@ public class Sorting {
     }
 
     static class AppleComparator implements Comparator<Apple> {
+
+        @Override
         public int compare(Apple a1, Apple a2){
             return a1.getWeight().compareTo(a2.getWeight());
         }

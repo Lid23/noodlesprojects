@@ -43,6 +43,8 @@ public class ChainOfResponsibilityMain {
 
     static private class HeaderTextProcessing
             extends ProcessingObject<String> {
+
+        @Override
         public String handleWork(String text) {
             return "From Raoul, Mario and Alan: " + text;
         }
@@ -50,6 +52,7 @@ public class ChainOfResponsibilityMain {
 
     static private class SpellCheckerProcessing
             extends ProcessingObject<String> {
+        @Override
         public String handleWork(String text) {
             return text.replaceAll("labda", "lambda");
         }

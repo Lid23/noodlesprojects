@@ -1,10 +1,8 @@
 package com.noodles.java8.functionalprogramming.stream.use;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.Optional;
-
-import static nod.java8.commons.beans.Dish.menu;
 
 
 public class Finding{
@@ -22,19 +20,19 @@ public class Finding{
     }
     
     private static boolean isVegetarianFriendlyMenu(){
-        return menu.stream().anyMatch(Dish::isVegetarian);
+        return Dish.menu.stream().anyMatch(Dish::isVegetarian);
     }
     
     private static boolean isHealthyMenu(){
-        return menu.stream().allMatch(d -> d.getCalories() < 1000);
+        return Dish.menu.stream().allMatch(d -> d.getCalories() < 1000);
     }
     
     private static boolean isHealthyMenu2(){
-        return menu.stream().noneMatch(d -> d.getCalories() >= 1000);
+        return Dish.menu.stream().noneMatch(d -> d.getCalories() >= 1000);
     }
     
     private static Optional<Dish> findVegetarianDish(){
-        return menu.stream().filter(Dish::isVegetarian).findAny();
+        return Dish.menu.stream().filter(Dish::isVegetarian).findAny();
     }
     
 }

@@ -8,6 +8,8 @@ public class FilterFiles {
 
         //java7 筛选隐藏文件
         File[] hiddenFiles = new File(".").listFiles(new FileFilter(){
+
+            @Override
             public boolean accept(File file){
                 return file.isHidden();
             }

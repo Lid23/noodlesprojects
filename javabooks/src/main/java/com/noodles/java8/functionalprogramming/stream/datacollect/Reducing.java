@@ -1,9 +1,8 @@
 package com.noodles.java8.functionalprogramming.stream.datacollect;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import static java.util.stream.Collectors.reducing;
-import static nod.java8.commons.beans.Dish.menu;
 
 public class Reducing {
 
@@ -15,18 +14,18 @@ public class Reducing {
     }
 
     private static int calculateTotalCalories() {
-        return menu.stream().collect(reducing(0, Dish::getCalories, (Integer i, Integer j) -> i + j));
+        return Dish.menu.stream().collect(reducing(0, Dish::getCalories, (Integer i, Integer j) -> i + j));
     }
 
     private static int calculateTotalCaloriesWithMethodReference() {
-        return menu.stream().collect(reducing(0, Dish::getCalories, Integer::sum));
+        return Dish.menu.stream().collect(reducing(0, Dish::getCalories, Integer::sum));
     }
 
     private static int calculateTotalCaloriesWithoutCollectors() {
-        return menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
+        return Dish.menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
     }
 
     private static int calculateTotalCaloriesUsingSum() {
-        return menu.stream().mapToInt(Dish::getCalories).sum();
+        return Dish.menu.stream().mapToInt(Dish::getCalories).sum();
     }
 }

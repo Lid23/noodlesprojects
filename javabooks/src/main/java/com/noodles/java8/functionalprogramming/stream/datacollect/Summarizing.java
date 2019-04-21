@@ -1,13 +1,12 @@
 package com.noodles.java8.functionalprogramming.stream.datacollect;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.Comparator;
 import java.util.IntSummaryStatistics;
 import java.util.function.BinaryOperator;
 
 import static java.util.stream.Collectors.*;
-import static nod.java8.commons.beans.Dish.menu;
 
 public class Summarizing {
 
@@ -24,36 +23,36 @@ public class Summarizing {
 
 
     private static long howManyDishes() {
-        return menu.stream().collect(counting());
+        return Dish.menu.stream().collect(counting());
     }
 
     private static Dish findMostCaloricDish() {
-        return menu.stream().collect(reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2)).get();
+        return Dish.menu.stream().collect(reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2)).get();
     }
 
     private static Dish findMostCaloricDishUsingComparator() {
         Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
         BinaryOperator<Dish> moreCaloricOf = BinaryOperator.maxBy(dishCaloriesComparator);
-        return menu.stream().collect(reducing(moreCaloricOf)).get();
+        return Dish.menu.stream().collect(reducing(moreCaloricOf)).get();
     }
 
     private static int calculateTotalCalories() {
-        return menu.stream().collect(summingInt(Dish::getCalories));
+        return Dish.menu.stream().collect(summingInt(Dish::getCalories));
     }
 
     private static Double calculateAverageCalories() {
-        return menu.stream().collect(averagingInt(Dish::getCalories));
+        return Dish.menu.stream().collect(averagingInt(Dish::getCalories));
     }
 
     private static IntSummaryStatistics calculateMenuStatistics() {
-        return menu.stream().collect(summarizingInt(Dish::getCalories));
+        return Dish.menu.stream().collect(summarizingInt(Dish::getCalories));
     }
 
     private static String getShortMenu() {
-        return menu.stream().map(Dish::getName).collect(joining());
+        return Dish.menu.stream().map(Dish::getName).collect(joining());
     }
 
     private static String getShortMenuCommaSeparated() {
-        return menu.stream().map(Dish::getName).collect(joining(", "));
+        return Dish.menu.stream().map(Dish::getName).collect(joining(", "));
     }
 }

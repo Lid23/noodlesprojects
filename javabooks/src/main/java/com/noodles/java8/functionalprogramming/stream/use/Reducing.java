@@ -1,12 +1,10 @@
 package com.noodles.java8.functionalprogramming.stream.use;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
-import static nod.java8.commons.beans.Dish.menu;
 
 
 public class Reducing{
@@ -26,7 +24,7 @@ public class Reducing{
         Optional<Integer> min = numbers.stream().reduce(Integer::min);
         min.ifPresent(System.out::println);
 
-        int calories = menu.stream()
+        int calories = Dish.menu.stream()
                            .map(Dish::getCalories)
                            .reduce(0, Integer::sum);
         System.out.println("Number of calories:" + calories);

@@ -84,7 +84,9 @@ public class Test1 {
             T result = s.get();
             long duration = (System.nanoTime() - start) / 1_000_000;
             System.out.println("Result: " + result);
-            if (duration < fastest) fastest = duration;
+            if (duration < fastest) {
+                fastest = duration;
+            }
         }
         return fastest;
     }

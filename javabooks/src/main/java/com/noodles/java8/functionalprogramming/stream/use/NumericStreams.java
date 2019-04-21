@@ -1,15 +1,13 @@
 package com.noodles.java8.functionalprogramming.stream.use;
 
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-import static nod.java8.commons.beans.Dish.menu;
 
 
 public class NumericStreams{
@@ -19,14 +17,14 @@ public class NumericStreams{
         List<Integer> numbers = Arrays.asList(3,4,5,1,2);
 
         Arrays.stream(numbers.toArray()).forEach(System.out::println);
-        int calories = menu.stream()
+        int calories = Dish.menu.stream()
                            .mapToInt(Dish::getCalories)
                            .sum();
         System.out.println("Number of calories:" + calories);
 
 
         // max and OptionalInt
-        OptionalInt maxCalories = menu.stream()                                                      
+        OptionalInt maxCalories = Dish.menu.stream()
                                       .mapToInt(Dish::getCalories)
                                       .max();
 

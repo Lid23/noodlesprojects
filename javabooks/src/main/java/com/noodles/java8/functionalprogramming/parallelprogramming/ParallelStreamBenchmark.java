@@ -1,5 +1,7 @@
 package com.noodles.java8.functionalprogramming.parallelprogramming;
 
+import org.openjdk.jmh.annotations.*;
+
 import java.util.concurrent.TimeUnit;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;

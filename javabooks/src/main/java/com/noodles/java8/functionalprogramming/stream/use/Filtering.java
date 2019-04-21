@@ -1,12 +1,11 @@
 package com.noodles.java8.functionalprogramming.stream.use;
 
-import nod.java8.commons.beans.Dish;
+import com.noodles.java8.beans.Dish;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
-import static nod.java8.commons.beans.Dish.menu;
 
 
 public class Filtering{
@@ -15,7 +14,7 @@ public class Filtering{
 
         // Filtering with predicate
         List<Dish> vegetarianMenu =
-            menu.stream()
+            Dish.menu.stream()
                 .filter(Dish::isVegetarian)
                 .collect(toList());
 
@@ -30,7 +29,7 @@ public class Filtering{
 
         // Truncating a stream
         List<Dish> dishesLimit3 =
-            menu.stream()
+           Dish.menu.stream()
                 .filter(d -> d.getCalories() > 300)
                 .limit(3)
                 .collect(toList());
@@ -39,7 +38,7 @@ public class Filtering{
 
         // Skipping elements
         List<Dish> dishesSkip2 =
-            menu.stream()
+            Dish.menu.stream()
                 .filter(d -> d.getCalories() > 300)
                 .skip(2)
                 .collect(toList());

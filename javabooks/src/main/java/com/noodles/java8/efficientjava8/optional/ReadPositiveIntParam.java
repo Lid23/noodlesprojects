@@ -1,12 +1,12 @@
 package com.noodles.java8.efficientjava8.optional;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 import java.util.Properties;
 
 import static java.util.Optional.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReadPositiveIntParam {
 

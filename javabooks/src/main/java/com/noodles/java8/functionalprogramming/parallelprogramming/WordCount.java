@@ -24,7 +24,9 @@ public class WordCount {
             if (Character.isWhitespace(c)) {
                 lastSpace = true;
             } else {
-                if (lastSpace) counter++;
+                if (lastSpace) {
+                    counter++;
+                }
                 lastSpace = Character.isWhitespace(c);
             }
         }
