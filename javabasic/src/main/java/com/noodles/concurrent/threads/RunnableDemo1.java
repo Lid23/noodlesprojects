@@ -35,7 +35,8 @@ public class RunnableDemo1 implements Runnable{
 			System.out.print(fibonacci(i) + ",");
 		}
 	}
-	
+
+	@Override
 	public void run(){
 		printFibonacci(n);
 	}
