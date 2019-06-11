@@ -11,11 +11,11 @@ import java.util.Date;
 
 /**
  * @program: noodlesprojects
- * @description: NettyClient
+ * @description: NettyClientSimple
  * @author: Eric
  * @create: 2019-05-14 16:58
  **/
-public class NettyClient {
+public class NettyClientSimple {
 
     public static void main(String[] args) throws InterruptedException {
         Bootstrap bootstrap = new Bootstrap();

@@ -1,5 +1,7 @@
 package com.noodles.utils;
 
+import org.apache.commons.codec.binary.Base64;
+
 /**
  * 
  * 文件名：Base64Utils.java
@@ -17,9 +19,11 @@ public class Base64Util {
 	 * 日期：2016年4月6日下午3:21:37
 	 */
 	public static String encode(byte[] s) {
-		if (s == null)
+		if (s == null){
 			return null;
-		return (new sun.misc.BASE64Encoder()).encode(s);
+		}
+
+		return Base64.encodeBase64String(s);
 	}
 
 	/**
@@ -31,8 +35,9 @@ public class Base64Util {
 	 */
 	public static String encode(String s) {
 
-		if (s == null)
+		if (s == null){
 			return null;
+		}
 		return encode(s.getBytes());
 	}
 
@@ -47,10 +52,8 @@ public class Base64Util {
 		if (s == null){
 			return null;
 		}
-		sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
 		try {
-			byte[] b = decoder.decodeBuffer(s);
-			return b;
+			return Base64.decodeBase64(s);
 		} catch (Exception e) {
 			return null;
 		}
