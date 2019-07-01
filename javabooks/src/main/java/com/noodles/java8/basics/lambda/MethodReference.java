@@ -21,6 +21,8 @@ public class MethodReference {
         Function<Apple, Integer> fLamb = a -> a.getWeight();
         Function<Apple, Integer> fModRef = Apple::getWeight;
 
+        int i = fModRef.apply(new Apple());
+
         /**1. 指向静态方法的方法引用**/
         Function<String, Integer> ff = Integer::parseInt;
 

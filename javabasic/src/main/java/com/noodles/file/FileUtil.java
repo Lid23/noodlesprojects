@@ -1,8 +1,14 @@
 package com.noodles.file;
 
 import com.noodles.file.nio.FileNioUtil;
+import com.noodles.utils.StringUtil;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileUtil {
 
@@ -100,6 +106,21 @@ public class FileUtil {
 			}
 		}
 	}
+
+
+	/**
+	* @Description: 删除文件
+	* @Param: [filePath] 
+	* @return: void 
+	* @Author: Eric
+	* @Date: 2019/7/1 14:11
+	*/
+	public static void deleteFile(String filePath) throws IOException {
+		if (StringUtils.isNotEmpty(filePath)) {
+
+			FileUtils.deleteDirectory(new File(filePath));
+		}
+	}
     
     /**
      * 统计当前目录下的文件数量
@@ -192,10 +213,13 @@ public class FileUtil {
     
     public static void main(String args[]){
     	try {
-			String str = getStringFromFileByText("D:/cafiles/revoke/20180930-注销ID.txt", "供应商推送结果");
-			System.out.println(str);
+			String filePath = "d:/test";
+			File[] files = new File(filePath).listFiles();
+			for(File file : files){
+				System.out.println(file.getAbsolutePath());
+			}
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
