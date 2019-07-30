@@ -1,4 +1,4 @@
-package com.noodles.algorithm.recursive.hanoi;
+package com.noodles.algorithm.recursive;
 
 /**
  * @program: noodles-parent

@@ -17,6 +17,7 @@
         <module>spring-mybatis</module>
         <module>kafka-apis</module>
         <module>netty-demo</module>
+        <module>interest-mathematics</module>
     </modules>
 
 
