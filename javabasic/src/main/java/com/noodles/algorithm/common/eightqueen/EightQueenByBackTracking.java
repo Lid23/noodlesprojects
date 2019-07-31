@@ -8,7 +8,7 @@ package com.noodles.algorithm.common.eightqueen;
  */
 public class EightQueenByBackTracking {
 
-	public static int ARRAY_NUM = 8;
+	public static int ARRAY_NUM = 4;
 
 	/**模拟棋盘*/
 	public static int[][] array = new int[ARRAY_NUM][ARRAY_NUM];
@@ -24,7 +24,7 @@ public class EightQueenByBackTracking {
 
 	/**
 	 * 寻找皇后节点
-	 * @param i
+	 * @param i 行数
 	 * @return void
 	 * @author 巫威
 	 * @date 2019/7/30 16:01
