@@ -4,16 +4,26 @@ import com.noodles.java8.beans.Apple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
-/*
+import static java.util.Comparator.comparing;
 
+/**
+ * List集合操作
+ * @filename FilteringApples
+ * @author 巫威
+ * @date 2019/8/27 11:04
  */
 public class FilteringApples {
     public static void main(String[] args) {
-        List<Apple> appleList = Arrays.asList(new Apple(10, "green"), new Apple(100, "green"),
+        List<Apple> appleList = Arrays.asList(new Apple(100, "green"), new Apple(10, "green"),
                 new Apple(120, "red"));
+        System.out.println("初始list:" + appleList);
+
+		appleList.sort(comparing(Apple::getWeight));
+		System.out.println("排序list:" + appleList);
 
         List<Apple> greenAppleList =  filterGreenApples(appleList);
         System.out.println(greenAppleList);
