@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 import com.noodles.stream.bean.Student;
 
 /**
- * @filename StreamDemo
- * @description StreamDemo
+ * @filename TransactionDemo
+ * @description TransactionDemo
  * @author 巫威
  * @date 2019/7/25 15:01
  */
