@@ -3,10 +3,15 @@ package com.noodles.java8;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import com.noodles.gson.JsonUtil;
 import com.noodles.java8.bean.Dish;
+import com.noodles.java8.bean.Trader;
+import com.noodles.java8.bean.Transaction;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 /**
  * @filename StreamDemo
@@ -104,6 +109,40 @@ public class StreamDemo {
 		Optional<Integer> dishCount = Dish.menu.stream().map(d -> 1).reduce(Integer::sum);
 		System.out.println(dishCount.get());
 
+
+
+		/**交易员和交易*/
+		Trader raoul = new Trader("Raoul", "Cambridge");
+		Trader mario = new Trader("Mario", "Milan");
+		Trader alan = new Trader("Alan", "Cambridge");
+		Trader brian = new Trader("Brian", "Cambridge");
+		List<Transaction> transactions = Arrays
+				.asList(new Transaction(brian, 2011, 300), new Transaction(raoul, 2012, 1000),
+						new Transaction(raoul, 2011, 400), new Transaction(mario, 2012, 710),
+						new Transaction(mario, 2012, 700), new Transaction(alan, 2012, 950));
+
+		/**1.查找2011年发生的所有交易，并按交易额排序，从低到高*/
+		List<Transaction> transactions2011 = transactions.stream().filter(transaction -> 2011 == transaction.getYear())
+				.sorted(comparing(Transaction::getValue)).collect(toList());
+		System.out.println(transactions2011);
+
+		/**2.交易员在哪些不同的城市工作过*/
+		List<String> tradeCitys = transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct()
+				.collect(toList());
+		System.out.println(tradeCitys);
+		/**2.交易员在哪些不同的城市工作过,流转为Set*/
+		Set<String> tradeCitySet = transactions.stream().map(transaction -> transaction.getTrader().getCity())
+				.collect(toSet());
+		System.out.println(tradeCitySet);
+
+		/**3.查找所有来自于剑桥的交易员，并按姓名排序*/
+		List<Trader> cambridgeTraders = transactions.stream().map(Transaction::getTrader).filter(trader -> "Cambridge".equals(trader.getCity()))
+				.distinct().sorted(comparing(Trader::getName)).collect(toList());
+		System.out.println(cambridgeTraders);
+
+		/**返回所有交易员的姓名字符串，按字母顺序排序*/
+		List<String> traderSet = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().collect(toList());
+		System.out.println(traderSet);
 	}
 
 }
