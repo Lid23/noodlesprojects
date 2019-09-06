@@ -1,16 +1,29 @@
 package com.noodles.java8.bean;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static java.util.Arrays.asList;
 
-public class Dish {
+/**
+ * 菜单
+ * @filename Dish
+ * @author 巫威
+ * @date 2019/9/4 11:09
+ */
+public class Dish implements Serializable {
 
+    private static final long serialVersionUID = 981837346488420098L;
+
+    /**名称*/
     private final String name;
+    /**是否素菜*/
     private final boolean vegetarian;
+    /**卡路里*/
     private final int calories;
+    /**菜类*/
     private final Type type;
 
     public Dish(String name, boolean vegetarian, int calories, Type type) {

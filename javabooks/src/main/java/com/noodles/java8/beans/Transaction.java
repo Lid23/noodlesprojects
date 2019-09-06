@@ -1,6 +1,6 @@
 package com.noodles.java8.beans;
 
-public class Transaction{
+public class Transaction {
 
 	private Trader trader;
 	private int year;

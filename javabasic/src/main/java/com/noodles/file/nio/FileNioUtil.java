@@ -91,7 +91,7 @@ public class FileNioUtil{
 	
 	/**
 	 * 创建多级目录
-	 * @param filepath
+	 * @param dirPath
 	 * 作者：KJ00019
 	 * 日期：2017年11月27日下午2:27:54
 	 */

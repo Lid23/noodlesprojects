@@ -2,7 +2,9 @@ package com.noodles.java8;
 
 import java.security.PrivilegedAction;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -10,6 +12,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import com.noodles.java8.bean.Apple;
+import static java.util.Arrays.asList;
+import static java.util.Comparator.comparing;
 
 /**
  * @filename LambdaDemo
@@ -19,9 +23,14 @@ import com.noodles.java8.bean.Apple;
  */
 public class LambdaDemo {
 
+	static List<Apple> appleList = asList(new Apple(100, "red"), new Apple(50, "green"), new Apple(200, "red"), new Apple(300, "blue"));
+
 	public static void main(String[] args) {
 
-	/**Comparator*/
+		/**给苹果list进行排序，比较苹果的重量*/
+		appleList.sort(comparing(Apple::getWeight));
+
+		/**Comparator*/
 		Comparator<Apple> appleWeightComparator = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight());
 
 		Runnable runnable = () -> System.out.println();

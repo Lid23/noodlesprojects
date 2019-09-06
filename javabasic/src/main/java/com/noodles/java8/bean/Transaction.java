@@ -1,47 +1,38 @@
 package com.noodles.java8.bean;
 
-import java.io.Serializable;
+public class Transaction {
 
-/**
- * 交易定义
- * @filename Transaction
- * @author 巫威
- * @date 2019/8/29 11:26
- */
-public class Transaction implements Serializable {
+	/**交易员*/
+	private Trader trader;
 
-	private static final long serialVersionUID = 561897109930552386L;
-	/**交易金额*/
-	private Double price;
+	/**交易年份*/
+	private int year;
 
-	/**交易货币*/
-	private String currency;
+	/**交易额*/
+	private int value;
 
-	public Transaction(Double price, String currency){
-		this.price = price;
-		this.currency = currency;
+	public Transaction(Trader trader, int year, int value)
+	{
+		this.trader = trader;
+		this.year = year;
+		this.value = value;
 	}
 
-	public Transaction(){}
-
-	public Double getPrice() {
-		return price;
+	public Trader getTrader(){ 
+		return this.trader;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public int getYear(){
+		return this.year;
 	}
 
-	public String getCurrency() {
-		return currency;
+	public int getValue(){
+		return this.value;
 	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
+	
 	public String toString(){
-	    return "{" + this.price + ", " +
-	           "year: "+this.currency +"}";
+	    return "{" + this.trader + ", " +
+	           "year: "+this.year+", " +
+	           "value:" + this.value +"}";
 	}
 }
