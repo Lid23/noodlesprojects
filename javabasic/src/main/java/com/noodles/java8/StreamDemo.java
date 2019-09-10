@@ -1,9 +1,16 @@
 package com.noodles.java8;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import com.noodles.gson.JsonUtil;
 import com.noodles.java8.bean.Dish;
@@ -109,8 +116,6 @@ public class StreamDemo {
 		Optional<Integer> dishCount = Dish.menu.stream().map(d -> 1).reduce(Integer::sum);
 		System.out.println(dishCount.get());
 
-
-
 		/**交易员和交易*/
 		Trader raoul = new Trader("Raoul", "Cambridge");
 		Trader mario = new Trader("Mario", "Milan");
@@ -136,13 +141,88 @@ public class StreamDemo {
 		System.out.println(tradeCitySet);
 
 		/**3.查找所有来自于剑桥的交易员，并按姓名排序*/
-		List<Trader> cambridgeTraders = transactions.stream().map(Transaction::getTrader).filter(trader -> "Cambridge".equals(trader.getCity()))
-				.distinct().sorted(comparing(Trader::getName)).collect(toList());
+		List<Trader> cambridgeTraders = transactions.stream().map(Transaction::getTrader)
+				.filter(trader -> "Cambridge".equals(trader.getCity())).distinct().sorted(comparing(Trader::getName))
+				.collect(toList());
 		System.out.println(cambridgeTraders);
 
-		/**返回所有交易员的姓名字符串，按字母顺序排序*/
-		List<String> traderSet = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().collect(toList());
+		/**4.返回所有交易员的姓名字符串，按字母顺序排序*/
+		List<String> traderSet = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct()
+				.sorted().collect(toList());
 		System.out.println(traderSet);
+
+		/**5.有没有交易员是在米兰工作的*/
+		if (transactions.stream().anyMatch(transaction -> "Milan".equals(transaction.getTrader().getCity()))) {
+			System.out.println("有交易员在米兰工作");
+		}
+
+		/**6.打印生活在剑桥的交易员的所有交易额*/
+		transactions.stream().filter(transaction -> "Cambridge".equals(transaction.getTrader().getCity()))
+				.map(Transaction::getValue).forEach(System.out::println);
+
+		/**7.查找最高交易额*/
+		Optional<Integer> optionalMax = transactions.stream().map(Transaction::getValue).reduce(Integer::max);
+		System.out.println(optionalMax.get());
+
+		/**8.找到交易额最小的交易*/
+		Optional<Transaction> optionalMin = transactions.stream().min(comparing(Transaction::getValue));
+		System.out.println(optionalMin.get());
+
+		/**原始类型流特化,mapToInt返回一个IntStream*/
+		int calories = Dish.menu.stream().mapToInt(Dish::getCalories).sum();
+		System.out.println(calories);
+
+		/**如果没有最大值的话，显式处理OptionalInt去定义个默认值*/
+		OptionalInt maxCalories = Dish.menu.stream().mapToInt(Dish::getCalories).max();
+		System.out.println(maxCalories.orElse(1));
+
+		/**数值流一个从1到100的偶数流*/
+		IntStream evenNumers = IntStream.rangeClosed(1, 100).filter(n -> n % 2 == 0);
+		evenNumers.forEach(System.out::println);
+
+		/**不包含结束值*/
+		IntStream evenNumers1 = IntStream.range(1, 100).filter(n -> n % 2 == 0);
+		evenNumers1.forEach(System.out::println);
+
+		/**勾股数，三元组表示int[]（3， 4， 5）*/
+		Stream<int[]> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed().flatMap(
+				a -> IntStream.rangeClosed(a, 100).filter(b -> Math.sqrt(a * a + b * b) % 1 == 0)
+						.mapToObj(b -> new int[] { a, b, (int) Math.sqrt(a * a + b * b) }));
+		pythagoreanTriples.limit(50).forEach(t -> System.out.println(t[0] + "," + t[1] + "," + t[2]));
+
+		/**勾股数，上面的方法不是最优的，需要求两次平方根，让代码更紧凑的一种可能的方法是，先生成所有的三元数组
+		 * 再筛选符合条件的*/
+		Stream<double[]> pythagoreanTriples2 = IntStream.rangeClosed(1, 100).boxed().flatMap(
+				a -> IntStream.rangeClosed(a, 100).mapToObj(b -> new double[] { a, b, Math.sqrt(a * a + b * b) })
+						.filter(t -> t[2] % 1 == 0));
+		pythagoreanTriples2.limit(50).forEach(t -> System.out.println(t[0] + "," + t[1] + "," + t[2]));
+
+		/**由值创建流,将字符串转换为大写*/
+		Stream<String> strStream = Stream.of("Java 8", "Lambdas ", "In ", "Action");
+		strStream.map(String::toUpperCase).forEach(System.out::println);
+		/**可以使用empty得到一个空流*/
+		Stream<String> emptyStream = Stream.empty();
+
+		/**数组创建流*/
+		int[] numbers = { 2, 3, 5, 7, 11, 13 };
+		System.out.println(Arrays.stream(numbers).sum());
+
+		/**文件生成流，计算一个文件中有多少各不相同的词*/
+		long uniqueWords = 0;
+		try (Stream<String> lines = Files.lines(Paths.get("d:/data.txt"), Charset.defaultCharset())) {
+			uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" "))).distinct().count();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("uniqueWords=" + uniqueWords);
+
+		/**由函数生成流，创建无限流*/
+		Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println);
+		Stream.generate(Math::random).limit(10).forEach(System.out::println);
+
+		/**斐波那契数*/
+		Stream.iterate(new int[] { 0, 1 }, t -> new int[] { t[1], t[0] + t[1] }).limit(10).map(t -> t[0])
+				.forEach(System.out::println);
 	}
 
 }

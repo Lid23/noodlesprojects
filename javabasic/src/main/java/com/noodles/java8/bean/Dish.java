@@ -51,6 +51,10 @@ public class Dish implements Serializable {
 
     public enum Type { MEAT, FISH, OTHER }
 
+    public enum CaloricLevel {
+        DIET, NORMAL, FAT
+    }
+
     @Override
     public String toString() {
         return name;
