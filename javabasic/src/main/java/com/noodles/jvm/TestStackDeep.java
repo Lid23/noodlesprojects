@@ -31,11 +31,41 @@ public class TestStackDeep {
 		count++;
 		recursionWithParams(a, b, c);
 	}
+
+
+	/**
+	 * 局部变量a和b都作用到了函数的末尾，故java栈中b无法复用a所在的位置
+	 * @param
+	 * @return void
+	 * @author 巫威
+	 * @date 2019/9/18 17:03
+	 */
+	public void localvar1(){
+		int a = 0;
+		System.out.println(a);
+		int b = 0;
+	}
+
+	/**
+	 * 说明栈帧中局部变量表中的存储槽位是可以重用的，jclasslib查看
+	 * 局部变量a在大括号外不再有效，故局部变量b可以复用a的槽位
+	 * @param
+	 * @return void
+	 * @author 巫威
+	 * @date 2019/9/18 17:02
+	 */
+	public void localvar2(){
+		{
+			int a = 0;
+			System.out.println(a);
+		}
+		int b = 0;
+	}
 	
 	public static void main(String args[]){
 		try{
-			 recursion();
-			// recursionWithParams(0L, 0L, 0L);
+			 //recursion();
+			recursionWithParams(0L, 0L, 0L);
 		}catch(Throwable e){
 			System.out.println("deep of calling:" + count);
 			e.printStackTrace();

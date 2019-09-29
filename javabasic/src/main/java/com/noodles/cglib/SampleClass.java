@@ -17,7 +17,7 @@ public class SampleClass {
 	public void test(int i){
 		System.out.println("Hello Nancy " + i);
 	}
-	
+
 	public static void main(String args[]){
 		for(int i = 0; i<100000; i++){
 			Enhancer enhancer = new Enhancer();
@@ -31,9 +31,9 @@ public class SampleClass {
 					// System.out.println("After method run");
 					return result;
 				}
-				
+
 			});
-			
+
 			SampleClass proxy = (SampleClass)enhancer.create();
 			System.out.println(proxy.toString());
 		}

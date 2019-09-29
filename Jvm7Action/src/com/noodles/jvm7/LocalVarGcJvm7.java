@@ -1,4 +1,4 @@
-package com.noodles.jvm;
+package com.noodles.jvm7;
 
 /**
  * 测试局部变量对垃圾回收的影响，分配一块6M的空间，使用局部变量引用这块空间
@@ -7,7 +7,7 @@ package com.noodles.jvm;
  * 作者：KJ00019
  * 日期：2017年10月17日上午8:43:40
  */
-public class LocalVarGc {
+public class LocalVarGcJvm7 {
 	
 	/**
 	 * byte数组被变量a引用，因此无法回收
@@ -70,8 +70,8 @@ public class LocalVarGc {
 	}
 	
 	public static void main(String args[]){
-		LocalVarGc ins = new LocalVarGc();
-		ins.localVarGc1();
+		LocalVarGcJvm7 ins = new LocalVarGcJvm7();
+		ins.localVarGc4();
 	}
 	
 }
