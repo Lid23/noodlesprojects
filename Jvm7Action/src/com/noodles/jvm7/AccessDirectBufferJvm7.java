@@ -1,4 +1,4 @@
-package com.noodles.jvm;
+package com.noodles.jvm7;
 
 import java.nio.ByteBuffer;
 
@@ -11,10 +11,10 @@ import java.nio.ByteBuffer;
  * 作者：KJ00019
  * 日期：2017年10月20日上午9:43:22
  */
-public class AccessDirectBuffer {
+public class AccessDirectBufferJvm7 {
 
 	public static void main(String args[]){
-		AccessDirectBuffer accessDirectBuffer = new AccessDirectBuffer();
+		AccessDirectBufferJvm7 accessDirectBuffer = new AccessDirectBufferJvm7();
 
 		//使用-server优化
 
@@ -38,13 +38,13 @@ public class AccessDirectBuffer {
 	public void directAccess(){
 		long startTime = System.currentTimeMillis();
 		
-		ByteBuffer b = ByteBuffer.allocateDirect(500);
+		ByteBuffer b = ByteBuffer.allocateDirect(10000);
 		for(int i=0; i<100000; i++){
-			for(int j=0; j<99; j++){
+			for(int j=0; j<999; j++){
 				b.putInt(j);
 			}
 			b.flip();
-			for(int j=0; j<99; j++){
+			for(int j=0; j<999; j++){
 				b.getInt(j);
 			}
 			b.clear();
@@ -63,13 +63,13 @@ public class AccessDirectBuffer {
 	public void bufferAccess(){
 		long startTime = System.currentTimeMillis();
 
-		ByteBuffer b = ByteBuffer.allocate(500);
+		ByteBuffer b = ByteBuffer.allocate(10000);
 		for(int i=0; i<100000; i++){
-			for(int j=0; j<99; j++){
+			for(int j=0; j<999; j++){
 				b.putInt(j);
 			}
 			b.flip();
-			for(int j=0; j<99; j++){
+			for(int j=0; j<999; j++){
 				b.getInt(j);
 			}
 			b.clear();
