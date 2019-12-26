@@ -17,23 +17,23 @@ import java.util.Date;
  **/
 public class NettyClientSimple {
 
-    public static void main(String[] args) throws InterruptedException {
-        Bootstrap bootstrap = new Bootstrap();
-        NioEventLoopGroup group = new NioEventLoopGroup();
+	public static void main(String[] args) throws InterruptedException {
+		Bootstrap bootstrap = new Bootstrap();
+		NioEventLoopGroup group = new NioEventLoopGroup();
 
-        bootstrap.group(group)
-                .channel(NioSocketChannel.class)
-                .handler(new ChannelInitializer<Channel>() {
-                    @Override
-                    protected void initChannel(Channel channel) throws Exception {
-                        channel.pipeline().addLast(new StringEncoder());
-                    }
-                });
+		bootstrap.group(group)
+				.channel(NioSocketChannel.class)
+				.handler(new ChannelInitializer<Channel>() {
+					@Override
+					protected void initChannel(Channel channel) throws Exception {
+						channel.pipeline().addLast(new StringEncoder());
+					}
+				});
 
-        Channel channel = bootstrap.connect("127.0.0.1", 8000).channel();
-        while(true){
-            channel.writeAndFlush(new Date() + ": hello netty!");
-            Thread.sleep(2000L);
-        }
-    }
+		Channel channel = bootstrap.connect("127.0.0.1", 8000).channel();
+		while(true){
+			channel.writeAndFlush(new Date() + ": hello netty!");
+			Thread.sleep(2000L);
+		}
+	}
 }

@@ -19,5 +19,9 @@ public class Test {
         String decodeBase64 = new String(Base64Util.decode(frontDev), "UTF-8");
         System.out.println(decodeBase64);
 
+
+        String s = null;
+        System.out.println(s + "");
+
     }
 }

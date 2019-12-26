@@ -84,6 +84,9 @@ public class NIOServer {
                             if(selectionKey.isReadable()){
                                 try {
                                     SocketChannel socketChannel = (SocketChannel)selectionKey.channel();
+
+                                    System.out.println(socketChannel.hashCode());
+
                                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
                                     //(3)读取数据块以块为单位批量读取
