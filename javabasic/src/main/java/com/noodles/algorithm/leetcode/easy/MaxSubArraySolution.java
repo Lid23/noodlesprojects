@@ -1,4 +1,4 @@
-package com.noodles.algorithm.leetcode;
+package com.noodles.algorithm.leetcode.easy;
 
 import java.util.concurrent.ThreadLocalRandom;
 
