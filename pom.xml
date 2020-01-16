@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>datastructure</module>
         <module>designpatterns</module>
         <module>javabasic</module>
         <module>javabooks</module>
@@ -17,7 +16,7 @@
         <module>spring-mybatis</module>
         <module>kafka-apis</module>
         <module>netty-demo</module>
-        <module>interest-mathematics</module>
+        <module>jvm-7action</module>
     </modules>
 
 
