@@ -6,6 +6,7 @@ package com.noodles.algorithm.backtrack;
  * @author 巫威
  * @date 2019/7/31 18:11
  */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,11 @@ public class Permutations {
 	}
 
 	public static void main(String[] args){
-		int[] nums={1,2,3};
+		int[] nums = { 1, 2, 3 };
 		(new Permutations()).permute(nums);
+
+		if (nums.length > 3) {
+
+		}
 	}
 }

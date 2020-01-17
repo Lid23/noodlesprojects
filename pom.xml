@@ -17,6 +17,7 @@
         <module>kafka-apis</module>
         <module>netty-demo</module>
         <module>jvm-7action</module>
+        <module>java-algorithm</module>
     </modules>
 
 
