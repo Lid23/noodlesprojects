@@ -1,6 +1,7 @@
 import com.noodles.utils.Base64Util;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collections;
 
 /**
  * @program: noodlesprojects
@@ -11,17 +12,11 @@ import java.io.UnsupportedEncodingException;
 public class Test {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        // 有 rm -rf / 数据恢复经验
-        String backDev = "5pyJIHJtIC1yZiAvIOaVsOaNruaBouWkjee7j+mqjA==";
+        Integer i = 100;
+        Integer j = 100;
+        System.out.println(i==j);
+        System.out.println(j);
 
-        //处事不惊，临危不惧
-        String frontDev = "5aSE5LqL5LiN5oOK77yM5Li05Y2x5LiN5oOn";
-        String decodeBase64 = new String(Base64Util.decode(frontDev), "UTF-8");
-        System.out.println(decodeBase64);
-
-
-        String s = null;
-        System.out.println(s + "");
 
     }
 }
