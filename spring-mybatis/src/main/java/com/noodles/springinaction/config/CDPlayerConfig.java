@@ -1,7 +1,8 @@
 package com.noodles.springinaction.config;
 
-import noodles.springaction.bean.CompactDisc;
 import org.springframework.context.annotation.ComponentScan;
+
+import com.noodles.springinaction.bean.CompactDisc;
 
 /**
  * @ClassName: CDPlayerConfig
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 //扫描基础包
 //@ComponentScan(basePackages = {"noodles.springaction"})
 //类所在的包作为组件扫描的基础包
-@ComponentScan(basePackageClasses = {CompactDisc.class})
+@ComponentScan(basePackageClasses = { CompactDisc.class})
 public class CDPlayerConfig {
 
 }

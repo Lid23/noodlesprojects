@@ -1,14 +1,15 @@
 package com.noodles.springinaction.aop;
 
-import noodles.springaction.aop.aspectj.CriticAspect;
-import noodles.springaction.aop.aspectj.CriticismEngine;
-import noodles.springaction.aop.aspectj.CriticismEngineImpl;
-import noodles.springaction.aop.aspects.Audience;
-import noodles.springaction.aop.aspects.Audience2;
-import noodles.springaction.aop.aspects.EncoreableIntroducer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import com.noodles.springinaction.aop.aspectj.CriticAspect;
+import com.noodles.springinaction.aop.aspectj.CriticismEngine;
+import com.noodles.springinaction.aop.aspectj.CriticismEngineImpl;
+import com.noodles.springinaction.aop.aspects.Audience;
+import com.noodles.springinaction.aop.aspects.Audience2;
+import com.noodles.springinaction.aop.aspects.EncoreableIntroducer;
 
 /**
  * @ClassName: PerformanceConfig

@@ -1,14 +1,15 @@
 package com.noodles.springinaction.aop;
 
-import noodles.springaction.aop.aspects.TrackCounter;
-import noodles.springaction.bean.BlankDisc;
-import noodles.springaction.bean.CompactDisc;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.noodles.springinaction.aop.aspects.TrackCounter;
+import com.noodles.springinaction.bean.BlankDisc;
+import com.noodles.springinaction.bean.CompactDisc;
 
 /**
  * @ClassName: TrackCounterConfig
