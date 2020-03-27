@@ -1,4 +1,4 @@
-package com.noodles.concurrent.threads;
+package com.noodles.concurrent.threadpool.threads;
 
 /**
  * 文件名：RunnableDemo1.java

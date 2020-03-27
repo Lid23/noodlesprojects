@@ -1,4 +1,4 @@
-package com.noodles.concurrent.threads;
+package com.noodles.concurrent.threadpool.threads;
 
 /**
  * 实现Runnable接口，定义线程任务
