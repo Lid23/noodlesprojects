@@ -11,7 +11,6 @@
     <modules>
         <module>javabasic</module>
         <module>javabooks</module>
-        <module>rabbitmq-demo</module>
         <module>spring-mybatis</module>
         <module>kafka-apis</module>
         <module>netty-demo</module>
