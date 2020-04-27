@@ -12,11 +12,11 @@ public class Fibonacci {
 	}
 	
 	/**
-	 * 递归实现
-	 * @param n
-	 * @return
-	 * 作者：KJ00019
-	 * 日期：2017年10月31日下午4:27:21
+	 * 斐波那契
+	 * @param n 
+	 * @return int 
+	 * @author 巫威 
+	 * @date 2019-07-29 22:05 
 	 */
 	public static int fibonacci(int n){  
         if(n<=2){  
