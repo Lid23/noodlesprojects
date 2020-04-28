@@ -14,7 +14,7 @@
         <module>spring-mybatis</module>
         <module>kafka-apis</module>
         <module>netty-demo</module>
-        <module>jvm-7action</module>
+        <module>jvm7-action</module>
         <module>java-algorithm</module>
     </modules>
 
