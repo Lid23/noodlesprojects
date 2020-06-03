@@ -7,6 +7,7 @@ import java.util.List;
 import com.noodles.gson.JsonUtil;
 import com.noodles.java8.bean.TxLnTrxBean;
 import com.noodles.utils.DateUtils;
+import static java.util.stream.Collectors.toMap;
 
 /**
  * @filename StreamTest
@@ -23,29 +24,29 @@ public class StreamTest {
 		TxLnTrxBean tx1 = new TxLnTrxBean();
 		TxLnTrxBean tx2 = new TxLnTrxBean();
 		TxLnTrxBean tx3 = new TxLnTrxBean();
+
+		tx1.setTrxRefNo("1");
+		tx1.setCurrStatus("S");
+
+		tx2.setTrxRefNo("1");
+		tx2.setCurrStatus("R");
+
+		tx3.setTrxRefNo("3");
+		tx3.setCurrStatus("R");
+
 		txList.add(tx1);
 		txList.add(tx2);
 		txList.add(tx3);
 
-		Date nowDate = new Date();
-		Date yesDate = DateUtils.addDays(nowDate, -1);
 
-		tx1.setTrxRefNo("1");
-		tx1.setTrxDate(nowDate);
+		//System.out.println(txList.stream().collect(toMap(TxLnTrxBean::getTrxRefNo, TxLnTrxBean::getCurrStatus)));
 
-		tx2.setTrxRefNo("2");
-		tx2.setCurrStatus("R");
-		tx2.setTrxDate(nowDate);
 
-		tx3.setTrxRefNo("3");
-		tx3.setCurrStatus("R");
-		tx3.setTrxDate(yesDate);
+		/**v -> v表示选择将原来的对象作为map的value值*/
+		//System.out.println(JsonUtil.toJson(txList.stream().collect(toMap(TxLnTrxBean::getTrxRefNo, v -> v))));
 
-		TxLnTrxBean min = txList.stream().filter(txLnTrxBean -> "R".equals(txLnTrxBean.getCurrStatus()))
-				.min((trx1, trx2) -> trx1.getTrxDate().compareTo(trx2.getTrxDate())).orElse(null);
-		System.out.println(JsonUtil.toJson(min));
-
-		System.out.println(yesDate.compareTo(nowDate));
+		/**(v1, v2) -> v1中，如果v1与v2的key值相同，选择v1作为那个key所对应的value值*/
+		System.out.println(JsonUtil.toJson(txList.stream().collect(toMap(TxLnTrxBean::getTrxRefNo, v -> v, (v1, v2) -> v2))));
 
 	}
 }
