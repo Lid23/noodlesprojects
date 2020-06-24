@@ -12,11 +12,13 @@ import java.util.Collections;
 public class Test {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        Integer i = 100;
-        Integer j = 100;
+        Integer i = 258;
+        Integer j = 258;
         System.out.println(i==j);
         System.out.println(j);
 
-
+        Double d1 = 0.0;
+        System.out.println(d1 == 0);
+        System.out.println(d1.compareTo(0.0) == 0);
     }
 }
