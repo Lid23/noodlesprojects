@@ -1,10 +1,10 @@
-package com.noodles.algorithm.array;
+package com.noodles.algorithm;
 
 import java.util.Arrays;
 
 /**
  * @filename FindRepeatNumber
- * @description 查找数组中重复的数字
+ * @description 数组中重复的数字
  * @author 巫威
  * @date 2020/3/26 9:52
  */
