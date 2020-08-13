@@ -1,6 +1,9 @@
 package com.noodles.algorithm;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+
+import com.noodles.datastructure.LinkedList.LinkNode;
 
 /**
  * @filename PrintListFromTailToHead
@@ -13,20 +16,22 @@ public class PrintListFromTailToHead {
 
 	public static void main(String[] args) {
 
-		LinkedList<Integer> linkedList = new LinkedList<>();
-		linkedList.add(1);
-		linkedList.add(2);
-		linkedList.add(3);
+		LinkNode<Integer> linkNode = new LinkNode<>();
 	}
 
 	/**
 	 * 递归实现 TODO 复杂度 O(2ⁿ)
 	 * LinkedList做链表
-	 * @param linkedList
+	 * @param linkNode
 	 * @author 巫威
 	 * @date 2020/8/13 11:27
 	 */
-	public static void printListFromTailToHead(LinkedList<Integer> linkedList){
-
+	public static ArrayList<Integer> printListFromTailToHead(LinkNode<Integer> linkNode){
+		ArrayList<Integer> ret = new ArrayList<>();
+		if (linkNode != null) {
+			ret.addAll(printListFromTailToHead(linkNode.next));
+			ret.add(linkNode.item);
+		}
+		return ret;
 	}
 }
