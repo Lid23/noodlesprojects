@@ -11,5 +11,13 @@
 
     <artifactId>java-algorithm</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.noodles</groupId>
+            <artifactId>javabasic</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
