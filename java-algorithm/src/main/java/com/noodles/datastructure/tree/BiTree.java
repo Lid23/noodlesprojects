@@ -50,10 +50,14 @@ public class BiTree<E> {
 		System.out.println();
 		// 中序遍历
 		biTree.inRootTraverse(root);
+		System.out.println();
+		biTree.inRootTraverse();
 
 		System.out.println();
 		// 后序遍历
 		biTree.postRootTraverse(root);
+		System.out.println();
+		biTree.postRootTraverse();
 	}
 
 	private BiTreeNode<E> root;
@@ -81,7 +85,6 @@ public class BiTree<E> {
 	/**
 	 * 由标明空子树的先序遍历序列创建一颗二叉树的算法
 	 * @param preStr 
-	 * @return  
 	 * @author 巫威  
 	 * @date 2020-08-17 21:20 
 	 */
@@ -92,7 +95,6 @@ public class BiTree<E> {
 	/**
 	 * 先序遍历二叉树基本操作的递归算法
 	 * @param t 
-	 * @return void  
 	 * @author 巫威  
 	 * @date 2020-08-17 21:23 
 	 */
@@ -109,28 +111,27 @@ public class BiTree<E> {
 
 	/**
 	 * 先序遍历二叉树基本操作的非递归算法
-	 * @param  
-	 * @return void  
+	 * 时间复杂度 O(n)
 	 * @author 巫威  
 	 * @date 2020-08-17 21:24 
 	 */
 	public void preRootTraverse() {
 		Stack<BiTreeNode> stack = new Stack<>();
-		if(root == null){
+		if (root == null) {
 			return;
 		}
 		stack.push(root);
 		BiTreeNode<E> biTreeNode = null;
-		while(!stack.isEmpty()){
+		while (!stack.isEmpty()) {
 			biTreeNode = stack.pop();
 			System.out.print(biTreeNode.getData() + " ");
-			if(biTreeNode.getrChild()!= null){
+			if (biTreeNode.getrChild() != null) {
 				stack.push(biTreeNode.getrChild());
 			}
-			while((biTreeNode = biTreeNode.getlChild()) != null) {
+			while ((biTreeNode = biTreeNode.getlChild()) != null) {
 				System.out.print(biTreeNode.getData() + " ");
 				BiTreeNode<E> rChild = biTreeNode.getrChild();
-				if(rChild != null){
+				if (rChild != null) {
 					stack.push(rChild);
 				}
 			}
@@ -140,7 +141,6 @@ public class BiTree<E> {
 	/**
 	 * 中序遍历二叉树基本操作的递归算法
 	 * @param t 
-	 * @return void  
 	 * @author 巫威  
 	 * @date 2020-08-17 21:23 
 	 */
@@ -157,19 +157,33 @@ public class BiTree<E> {
 
 	/**
 	 * 中序遍历二叉树基本操作的非递归算法
-	 * @param  
-	 * @return void  
+	 * 时间复杂度 O(n)
 	 * @author 巫威  
 	 * @date 2020-08-17 21:24 
 	 */
 	public void inRootTraverse() {
-
+		BiTreeNode<E> biTreeNode = root;
+		if (biTreeNode == null) {
+			return;
+		}
+		Stack<BiTreeNode> stack = new Stack();
+		stack.push(biTreeNode);
+		while (!stack.isEmpty()) {
+			while (stack.peek() != null) {
+				stack.push(stack.peek().getlChild());
+			}
+			stack.pop();
+			if (!stack.isEmpty()) {
+				BiTreeNode<E> node = stack.pop();
+				System.out.print(node.getData() + " ");
+				stack.push(node.getrChild());
+			}
+		}
 	}
 
 	/**
 	 * 后序遍历二叉树基本操作的递归算法
 	 * @param t 
-	 * @return void  
 	 * @author 巫威  
 	 * @date 2020-08-17 21:23 
 	 */
@@ -186,19 +200,46 @@ public class BiTree<E> {
 
 	/**
 	 * 后序遍历二叉树基本操作的非递归算法
-	 * @param  
-	 * @return void  
+	 * 时间复杂度 O(n)
 	 * @author 巫威  
 	 * @date 2020-08-17 21:24 
 	 */
 	public void postRootTraverse() {
+		BiTreeNode<E> biTreeNode = root;
+		if (biTreeNode == null) {
+			return;
+		}
+		Stack<BiTreeNode> stack = new Stack<>();
+		stack.push(biTreeNode);
+		boolean flag;
+		BiTreeNode<E> p = null;
+		while (!stack.isEmpty()) {
+			while (stack.peek() != null) {
+				stack.push(stack.peek().getlChild());
+			}
+			stack.pop(); // 空节点退栈
+			while (!stack.isEmpty()) {
+				biTreeNode = stack.peek();
+				if (biTreeNode.getrChild() == null || biTreeNode.getrChild() == p) {
+					System.out.print(biTreeNode.getData() + " ");
+					stack.pop();
+					p = biTreeNode;
+					flag = true;
+				} else {
+					stack.push(biTreeNode.getrChild());
+					flag = false;
+				}
+				if(!flag){
+					break;
+				}
 
+			}
+		}
 	}
 
 	/**
 	 * 层次遍历二叉树基本操作的算法（自左向右）
 	 * @param  
-	 * @return void  
 	 * @author 巫威  
 	 * @date 2020-08-17 21:26 
 	 */
