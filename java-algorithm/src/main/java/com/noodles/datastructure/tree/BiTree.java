@@ -1,6 +1,11 @@
 package com.noodles.datastructure.tree;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
+
+import EDU.oswego.cs.dl.util.concurrent.LinkedQueue;
 
 /**
  * @filename BiTree
@@ -58,6 +63,10 @@ public class BiTree<E> {
 		biTree.postRootTraverse(root);
 		System.out.println();
 		biTree.postRootTraverse();
+
+		// 层次遍历
+		System.out.println();
+		biTree.levelTRaverse();
 	}
 
 	private BiTreeNode<E> root;
@@ -244,6 +253,23 @@ public class BiTree<E> {
 	 * @date 2020-08-17 21:26 
 	 */
 	public void levelTRaverse() {
+
+		BiTreeNode<E> biTreeNode = root;
+		if(biTreeNode == null){
+			return;
+		}
+		Queue<BiTreeNode> queue = new LinkedList<>();
+		queue.add(biTreeNode);
+		while(!queue.isEmpty()){
+			biTreeNode = queue.poll();
+			System.out.print(biTreeNode.getData() + " ");
+			if(biTreeNode.getlChild() != null){
+				queue.add(biTreeNode.getlChild());
+			}
+			if(biTreeNode.getrChild() != null){
+				queue.add(biTreeNode.getrChild());
+			}
+		}
 
 	}
 

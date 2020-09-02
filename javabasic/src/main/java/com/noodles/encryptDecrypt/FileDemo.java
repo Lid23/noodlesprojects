@@ -34,7 +34,7 @@ public class FileDemo {
 
 		FileUploadRequest req = new FileUploadRequest();
 		// 设置未作压缩加密前的原始数据文件路径
-		req.setDataFile("d:/文件加解密例子/test.txt");
+		req.setDataFile("d:/文件加解密例子/test1.pdf");
 		// 设置压缩加密后的密文文件输出路径(为空表示与原始数据文件同目录)
 		req.setTargetFilePath("d:/文件加解密例子/");
 
@@ -57,7 +57,7 @@ public class FileDemo {
 		String RSA_PRIVATE_KEY = "d:/文件加解密例子/rsa_private_key.pem";
 		FileUploadValidationRequest req = new FileUploadValidationRequest();
 		// 设置压缩加密后的数据文件路径
-		req.setDataFile("d:/文件加解密例子/test.cry");
+		req.setDataFile("d:/文件加解密例子/test1.cry");
 		// 设置解密解压的原始文件输出路径(为空表示与加密数据文件同目录)
 		req.setTargetFilePath("d:/文件加解密例子/");
 

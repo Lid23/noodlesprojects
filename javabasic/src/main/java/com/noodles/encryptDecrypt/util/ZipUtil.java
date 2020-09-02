@@ -39,7 +39,7 @@ public class ZipUtil {
 			 response.setErrorMessage("待压缩文件不存在或不能是文件夹!");
 			 return response;
 		 }
-		 if(!srcFile.getName().endsWith(".txt") || !targetFile.getName().endsWith(".zip")){
+		 if(!(srcFile.getName().endsWith(".txt") || srcFile.getName().endsWith(".pdf")) || !targetFile.getName().endsWith(".zip")){
 			 response.setSuccess(false);
 			 response.setErrorMessage("待压缩文件后缀必须为txt，压缩后的文件后缀必须为zip!");
 			 return response;
