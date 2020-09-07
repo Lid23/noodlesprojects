@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 import EDU.oswego.cs.dl.util.concurrent.LinkedQueue;
+import com.noodles.gson.JsonUtil;
 
 /**
  * @filename BiTree
@@ -67,6 +68,12 @@ public class BiTree<E> {
 		// 层次遍历
 		System.out.println();
 		biTree.levelTRaverse();
+
+		System.out.println();
+		BiTreeNode<String> searchNode =  biTree.searchNode(root, "+");
+		System.out.println(JsonUtil.toJson(searchNode));
+
+		System.out.println(biTree.countNode(root));
 	}
 
 	private BiTreeNode<E> root;
@@ -80,7 +87,6 @@ public class BiTree<E> {
 	 * @param inOrder
 	 * @param inIndex
 	 * @param count 
-	 * @return  
 	 * @author 巫威  
 	 * @date 2020-08-17 21:17 
 	 */
@@ -99,6 +105,14 @@ public class BiTree<E> {
 	 */
 	public BiTree(String preStr) {
 
+	}
+
+	public BiTreeNode<E> getRoot() {
+		return root;
+	}
+
+	public void setRoot(BiTreeNode<E> root) {
+		this.root = root;
 	}
 
 	/**
@@ -273,11 +287,41 @@ public class BiTree<E> {
 
 	}
 
-	public BiTreeNode<E> getRoot() {
-		return root;
+	/**
+	 * 根据节点值查找二叉树节点
+	 * @param t
+	 * @param x
+	 * @return com.noodles.datastructure.tree.BiTreeNode<E>
+	 * @author 巫威
+	 * @date 2020/9/7 10:18
+	 */
+	public BiTreeNode<E> searchNode(BiTreeNode<E> t, E x){
+		if(t == null){
+			return null;
+		}
+		if(t.getData().equals(x)){
+			return t;
+		}else {
+			BiTreeNode<E> lResult = searchNode(t.getlChild(), x);
+			return lResult == null ? searchNode(t.getrChild(), x) : lResult;
+		}
 	}
 
-	public void setRoot(BiTreeNode<E> root) {
-		this.root = root;
+	/**
+	 * 先序遍历统计二叉树节点个数
+	 * @param t
+	 * @return int
+	 * @author 巫威
+	 * @date 2020/9/7 10:26
+	 */
+	public int countNode(BiTreeNode<E> t) {
+		int count = 0;
+		if(t!=null){
+			++count;
+			count += countNode(t.getlChild());
+			count += countNode(t.getrChild());
+		}
+		return count;
 	}
+
 }
