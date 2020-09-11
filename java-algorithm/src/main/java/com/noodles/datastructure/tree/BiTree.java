@@ -16,66 +16,6 @@ import com.noodles.gson.JsonUtil;
  */
 public class BiTree<E> {
 
-	public static void main(String[] args) {
-		BiTreeNode<String> root = new BiTreeNode<>();
-		root.setData("-");
-		BiTreeNode<String> node1 = new BiTreeNode<>();
-		node1.setData("*");
-		BiTreeNode<String> node2 = new BiTreeNode<>();
-		node2.setData("/");
-		BiTreeNode<String> node3 = new BiTreeNode<>();
-		node3.setData("+");
-		BiTreeNode<String> node4 = new BiTreeNode<>();
-		node4.setData("A");
-		BiTreeNode<String> node5 = new BiTreeNode<>();
-		node5.setData("B");
-		BiTreeNode<String> node6 = new BiTreeNode<>();
-		node6.setData("C");
-		BiTreeNode<String> node7 = new BiTreeNode<>();
-		node7.setData("D");
-		BiTreeNode<String> node8 = new BiTreeNode<>();
-		node8.setData("E");
-
-		root.setlChild(node1);
-		root.setrChild(node2);
-		node1.setlChild(node3);
-		node1.setrChild(node6);
-		node3.setlChild(node4);
-		node3.setrChild(node5);
-		node2.setlChild(node7);
-		node2.setrChild(node8);
-
-		BiTree<String> biTree = new BiTree<>();
-		biTree.setRoot(root);
-
-		// 先序遍历
-		biTree.preRootTraverse(root);
-		System.out.println();
-		biTree.preRootTraverse();
-
-		System.out.println();
-		// 中序遍历
-		biTree.inRootTraverse(root);
-		System.out.println();
-		biTree.inRootTraverse();
-
-		System.out.println();
-		// 后序遍历
-		biTree.postRootTraverse(root);
-		System.out.println();
-		biTree.postRootTraverse();
-
-		// 层次遍历
-		System.out.println();
-		biTree.levelTRaverse();
-
-		System.out.println();
-		BiTreeNode<String> searchNode =  biTree.searchNode(root, "+");
-		System.out.println(JsonUtil.toJson(searchNode));
-
-		System.out.println(biTree.countNode(root));
-	}
-
 	private BiTreeNode<E> root;
 
 	public BiTree() {
@@ -83,15 +23,28 @@ public class BiTree<E> {
 
 	/**
 	 * 由先序序列和中序序列创建一颗二叉树的算法
-	 * @param preOrder
-	 * @param inOrder
-	 * @param inIndex
-	 * @param count 
+	 * @param preOrder 整棵树的先序遍历序列
+	 * @param inOrder 整棵树的后序遍历序列
+	 * @param preIndex 先序遍历序列在preOrder中的开始位置
+	 * @param inIndex 中序遍历序列在inOrder中的开始位置
+	 * @param count  树中节点的个数
 	 * @author 巫威  
 	 * @date 2020-08-17 21:17 
 	 */
-	public BiTree(String preOrder, String inOrder, int preIndex, int inIndex, int count) {
-
+	public BiTree(E[] preOrder, E[] inOrder, int preIndex, int inIndex, int count) {
+		if (count <= 0) {
+			return;
+		}
+		E node = preOrder[preIndex];
+		int i = 0;
+		for (; i < count; i++) {
+			if (node.equals(inOrder[i+inIndex])) {
+				break;
+			}
+		}
+		root = new BiTreeNode(node);
+		root.setlChild(new BiTree<E>(preOrder, inOrder, preIndex + 1, inIndex, i).root);
+		root.setrChild(new BiTree<E>(preOrder, inOrder, preIndex + i + 1, inIndex + i + 1, count - i - 1).root);
 	}
 
 	/**用于记录preStr的索引值*/
@@ -252,7 +205,7 @@ public class BiTree<E> {
 					stack.push(biTreeNode.getrChild());
 					flag = false;
 				}
-				if(!flag){
+				if (!flag) {
 					break;
 				}
 
@@ -269,18 +222,18 @@ public class BiTree<E> {
 	public void levelTRaverse() {
 
 		BiTreeNode<E> biTreeNode = root;
-		if(biTreeNode == null){
+		if (biTreeNode == null) {
 			return;
 		}
 		Queue<BiTreeNode> queue = new LinkedList<>();
 		queue.add(biTreeNode);
-		while(!queue.isEmpty()){
+		while (!queue.isEmpty()) {
 			biTreeNode = queue.poll();
 			System.out.print(biTreeNode.getData() + " ");
-			if(biTreeNode.getlChild() != null){
+			if (biTreeNode.getlChild() != null) {
 				queue.add(biTreeNode.getlChild());
 			}
-			if(biTreeNode.getrChild() != null){
+			if (biTreeNode.getrChild() != null) {
 				queue.add(biTreeNode.getrChild());
 			}
 		}
@@ -295,20 +248,20 @@ public class BiTree<E> {
 	 * @author 巫威
 	 * @date 2020/9/7 10:18
 	 */
-	public BiTreeNode<E> searchNode(BiTreeNode<E> t, E x){
-		if(t == null){
+	public BiTreeNode<E> searchNode(BiTreeNode<E> t, E x) {
+		if (t == null) {
 			return null;
 		}
-		if(t.getData().equals(x)){
+		if (t.getData().equals(x)) {
 			return t;
-		}else {
+		} else {
 			BiTreeNode<E> lResult = searchNode(t.getlChild(), x);
 			return lResult == null ? searchNode(t.getrChild(), x) : lResult;
 		}
 	}
 
 	/**
-	 * 先序遍历统计二叉树节点个数
+	 * 先序递归遍历统计二叉树节点个数
 	 * @param t
 	 * @return int
 	 * @author 巫威
@@ -316,12 +269,80 @@ public class BiTree<E> {
 	 */
 	public int countNode(BiTreeNode<E> t) {
 		int count = 0;
-		if(t!=null){
+		if (t != null) {
 			++count;
 			count += countNode(t.getlChild());
 			count += countNode(t.getrChild());
 		}
 		return count;
+	}
+
+	/**
+	 * 层次遍历统计二叉树节点个数
+	 * @param t
+	 * @return int
+	 * @author 巫威
+	 * @date 2020/9/10 9:23
+	 */
+	public int countNode1(BiTreeNode<E> t) {
+		int count = 0;
+		BiTreeNode<E> biTreeNode = root;
+		if (biTreeNode == null) {
+			return count;
+		}
+		Queue<BiTreeNode> queue = new LinkedList<>();
+		queue.add(biTreeNode);
+		while (!queue.isEmpty()) {
+			biTreeNode = queue.poll();
+			++count;
+			if (biTreeNode.getlChild() != null) {
+				queue.add(biTreeNode.getlChild());
+			}
+			if (biTreeNode.getrChild() != null) {
+				queue.add(biTreeNode.getrChild());
+			}
+		}
+
+		return count;
+	}
+
+	/**
+	 * 递归求二叉树深度
+	 * @param t
+	 * @return int
+	 * @author 巫威
+	 * @date 2020/9/10 9:29
+	 */
+	public int getDepth(BiTreeNode<E> t) {
+		if (t == null) {
+			return 0;
+		}
+		int lDepth = getDepth(t.getlChild());
+		int rDepth = getDepth(t.getrChild());
+		return (lDepth > rDepth ? lDepth : rDepth) + 1;
+	}
+
+	/**
+	 * 判断两棵二叉树是否相等
+	 * @param t1
+	 * @param t2
+	 * @return boolean
+	 * @author 巫威
+	 * @date 2020/9/10 9:51
+	 */
+	public boolean isEqual(BiTreeNode<E> t1, BiTreeNode<E> t2) {
+		if (t1 == null && t2 == null) {
+			return true;
+		}
+
+		if (t1 != null && t2 != null) {
+			if (t1.getData().equals(t2.getData())) {
+				if (isEqual(t1.getlChild(), t2.getlChild()) && isEqual(t1.getrChild(), t2.getrChild())) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }
