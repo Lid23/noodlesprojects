@@ -24,9 +24,13 @@ public class CachedThreadPoolDemo {
 		System.out.println("ExecutePool启动");
 		ExecutorService pool = Executors.newCachedThreadPool();
 		for (int i = 1; i <= 1000; i++) {
-			RunnerService runnerService = new RunnerService();
-			pool.submit(new RunnerDemo(runnerService, String.valueOf(i)));
+			for (int j = 1; j <= 3; j++) {
+				RunnerService runnerService = new RunnerService();
+				pool.submit(new RunnerDemo(runnerService, String.valueOf(i)));
+			}
+			Thread.sleep(5000);
 		}
+
 		pool.shutdown();
 
 		long endTime = System.currentTimeMillis();

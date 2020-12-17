@@ -131,6 +131,11 @@ public class StreamDemo {
 				.sorted(comparing(Transaction::getValue)).collect(toList());
 		System.out.println(transactions2011);
 
+		/**求和*/
+		int sum3 = transactions.stream().map(d -> Integer.valueOf(d.getValue())).reduce(Integer::sum).get();
+		System.out.println("sum3=" + sum3);
+
+
 		/**2.交易员在哪些不同的城市工作过*/
 		List<String> tradeCitys = transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct()
 				.collect(toList());
