@@ -19,13 +19,13 @@ public class RegularExpression{
 		/*String regex = "abc*";
 		String input = "abcabcabc";
 		
-		System.out.println(matches(regex, input));
+		System.out.println(matches(regex, input));*/
 		
 		
-		testMatcherFind("\\w+", "Evening is full of the Linset's wings");*/
+		testMatcherFind("", "Evening is full of the Linset's wings");
 
 
-		testMatcherFind("s.[0-9]{6}", "http://quote.eastmoney.com/sz201001.html");
+		//testMatcherFind("s.[0-9]{6}", "http://quote.eastmoney.com/sz201001.html");
 		
 		/**组*/
 		/*String groupRegex = "(?m)(\\S+)\\s+((\\S+)\\s+(\\S+))$";
@@ -57,7 +57,7 @@ public class RegularExpression{
 		/*testReplacements();*/
 		
 		/**reset*/
-		testRegexReset();
+		//testRegexReset();
 	}
 	
 	/**

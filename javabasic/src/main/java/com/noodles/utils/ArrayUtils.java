@@ -1,5 +1,7 @@
 package com.noodles.utils;
 
+import org.apache.commons.lang.math.RandomUtils;
+
 /**
  * @filename ArrayUtils
  * @description 数组工具类
@@ -20,7 +22,7 @@ public class ArrayUtils {
 	public static int[] getArray(int n, int min, int max) {
 		int[] array = new int[n];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = RandomUtils.randomInt(min, max);
+			array[i] = RandomUtils.nextInt();
 		}
 		return array;
 	}
@@ -28,7 +30,7 @@ public class ArrayUtils {
 	public static Integer[] getArrayInteger(int n, int min, int max) {
 		Integer[] array = new Integer[n];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = Integer.valueOf(RandomUtils.randomInt(min, max));
+			array[i] = Integer.valueOf(RandomUtils.nextInt());
 		}
 		return array;
 	}

@@ -1,4 +1,4 @@
-package com.noodles.file.nio;
+package com.noodles.file;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

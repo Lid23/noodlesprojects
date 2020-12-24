@@ -65,10 +65,6 @@ public class ReadBigFile {
 		        	String str = line.substring(line.indexOf("申请结果回调参数：") + "申请结果回调参数：".length());
 		        	System.out.println(str);
 		        	
-		        	LoanConfirmCallbackRespVo loanConfirmCallbackRespVo = JsonUtil.fromJson(str, LoanConfirmCallbackRespVo.class);
-		        	
-		        	System.out.println(loanConfirmCallbackRespVo.getLoan_receipts());
-		        	
 		        }
 			}
 			
