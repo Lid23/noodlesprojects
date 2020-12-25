@@ -33,45 +33,6 @@ public class FileTest {
 	}
 
 	/**
-	 * 更新文件里的图片名字，拷贝图片到指定目录并重新命名
-	 * @param
-	 * @return void
-	 * @author 巫威
-	 * @date 2020/12/24 17:55
-	 */
-	@Test
-	public void replaceTxtByStrTest() {
-		String path = "E:/NoodlesGuide/3-数据库/1-数据库系统原理/";
-		String file = "数据库系统原理.md";
-		String imagePath = "image/";
-		Function<String, String> function = (line) -> {
-			if (line.contains("<img")) {
-				System.out.println("before change:" + line);
-				Document doc = Jsoup.parseBodyFragment(line);
-				String filePath = doc.select("img").first().attr("src");
-				String fileNameOld = filePath.substring(filePath.lastIndexOf("/") + 1);
-				String fileNameNew = RandomUtils.getSerialNo(DateUtils.DATE_DEFAULT_LONG_FORMAT, RandomUtils.NUMBERS, 4)
-						.concat(fileNameOld.substring(fileNameOld.lastIndexOf(".")));
-
-				System.out.println(fileNameOld);
-				System.out.println(fileNameNew);
-
-				/**重命名文件*/
-				File file1 = new File(path.concat(imagePath).concat(fileNameOld));
-				file1.renameTo(new File(path.concat(imagePath).concat(fileNameNew)));
-
-				line = line.replace(fileNameOld, fileNameNew)
-						.replace("https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com", "image")
-						.replace("https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com", "image");
-				System.out.println("after change:" + line);
-			}
-
-			return line;
-		};
-		FileUtil.replaceTxtByStr(path + file, function);
-	}
-
-	/**
 	 * 拷贝文件测试
 	 * @param
 	 * @author 巫威
