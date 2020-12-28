@@ -1,13 +1,13 @@
 package com.noodles.utils;
 
-import org.apache.commons.lang.time.DateFormatUtils;
-
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import org.apache.commons.lang.time.DateFormatUtils;
 
 /**
  * 文件名：DateUtils.java
@@ -149,7 +149,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	 * @return
 	 */
 	public static long pastDays(Date date) {
-		long t = new Date().getTime() - date.getTime();
+		long t = System.currentTimeMillis() - date.getTime();
 		return t / (24 * 60 * 60 * 1000);
 	}
 
@@ -210,7 +210,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	 * @return
 	 */
 	public static Timestamp getSysTimestamp() {
-		return new Timestamp(new Date().getTime());
+		return new Timestamp(System.currentTimeMillis());
 	}
 
 	/**
@@ -253,8 +253,9 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	 * 日期：2016年5月23日下午4:17:13
 	 */
 	public static Date strToDate(String s, String style) {
-		if (null == s || s.length() == 0)
+		if (null == s || s.length() == 0) {
 			return null;
+		}
 		SimpleDateFormat df = new SimpleDateFormat(style);
 		try {
 			Date date = df.parse(s);
@@ -273,8 +274,9 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	 * 日期：2016年5月23日下午4:23:25
 	 */
 	public static String dateToStr(Date date, String style) {
-		if (null == date)
+		if (null == date) {
 			return "";
+		}
 		SimpleDateFormat df = new SimpleDateFormat(style);
 		try {
 			String str = df.format(date);
@@ -412,13 +414,13 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 
 	/**
 	 * 获取前n天日期
-	 * @param count
+	 * @param n
 	 * @return
 	 * 作者：欧积雨
 	 * 日期：2016年6月20日下午5:51:16
 	 */
 	public static String getPreDate(long n) {
-		long time = new Date().getTime();
+		long time = System.currentTimeMillis();
 		long addDate = n * 24 * 60 * 60 * 1000;
 		time -= addDate;
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

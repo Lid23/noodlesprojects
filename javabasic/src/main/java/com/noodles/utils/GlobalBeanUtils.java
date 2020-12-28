@@ -18,7 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 import com.noodles.utils.bean.NlsQueryRepaymentPlanRespVo;
 import com.noodles.utils.bean.NlsRepaymentPlanDetail;
 import com.noodles.utils.bean.QueryRepaymentPlanRespVo;
@@ -58,7 +58,7 @@ public class GlobalBeanUtils {
 				(t, r) -> copyList(t.getPay_list(), r.getPay_list(),
 						(a) -> copyProperties(a, RepaymentPlanDetail::new)));*/
 
-		System.out.println(JsonUtil.toJson(queryRepaymentPlanRespVo));
+		System.out.println(JsonUtils.toJson(queryRepaymentPlanRespVo));
 	}
 
 
