@@ -3,7 +3,6 @@ package com.noodles.gson;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-import com.noodles.utils.PrintUtil;
 
 import java.util.ArrayList;
 import java.util.List;
