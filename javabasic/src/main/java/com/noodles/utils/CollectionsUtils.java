@@ -13,7 +13,13 @@ import java.util.Set;
  */
 public class CollectionsUtils {
 	
-	
+	/**
+	 * List去除重复的数据
+	 * @param stringList
+	 * @return java.util.List<java.lang.String>
+	 * @author 巫威
+	 * @date 2020/12/28 17:44
+	 */
 	public static List<String> removeStringListDup(List<String> stringList) {
 	    Set<String> set = new LinkedHashSet<>();
 	    set.addAll(stringList);
@@ -25,12 +31,5 @@ public class CollectionsUtils {
 	    return stringList;
 	}
 	
-	public static void main(String args[]){
-		List<String> list = new ArrayList<String>();
-		list.add("P2P552834");
-		list.add("P2P978070");
-		list.add("P2P978070");
-		System.out.println(list);
-		System.out.println(removeStringListDup(list));
-	}
+
 }

@@ -1,22 +1,17 @@
 package com.noodles.noodlesguide;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
-import org.apache.commons.codec.Charsets;
-import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 
 import com.noodles.date.utils.DateUtils;
-import com.noodles.file.FileNioUtil;
-import com.noodles.file.FileUtil;
+import com.noodles.file.utils.FileNioUtil;
+import com.noodles.file.utils.FileUtil;
 import com.noodles.random.utils.RandomUtils;
 
 /**
@@ -34,6 +29,38 @@ public class NoodleGuideTest {
 		System.out.println("test");
 	}
 
+
+	/**
+	 * 将笔记的图片复制到对应image目录下
+	 * @param
+	 * @return void
+	 * @author 巫威
+	 * @date 2020/12/28 16:45
+	 */
+	@Test
+	public void mvImageToGuideTest() {
+		String imageSrcPath = "C:/Users/KJ00019/Desktop/Github/CS-Notes/notes/pics/";
+		String notePath = "E:/NoodlesGuide/3-数据库/4-Mysql/";
+		String file = "MySQL.md";
+		String imagePath = "image/";
+		Consumer<String> consumer = (line) -> {
+			if (line.contains("<img")) {
+				System.out.println("before change:" + line);
+				Document doc = Jsoup.parseBodyFragment(line);
+				String filePath = doc.select("img").first().attr("src");
+				String fileNameOld = filePath.substring(filePath.lastIndexOf("/") + 1);
+
+				System.out.println(fileNameOld);
+
+				FileNioUtil.copyFile(imageSrcPath.concat(fileNameOld), notePath.concat(imagePath).concat(fileNameOld),
+						StandardCopyOption.REPLACE_EXISTING);
+			}
+
+		};
+
+		FileUtil.readLineHandler(notePath + file, consumer);
+	}
+
 	/**
 	 * 更新文件里的图片名字，拷贝图片到指定目录并重新命名
 	 * @param
@@ -43,8 +70,8 @@ public class NoodleGuideTest {
 	 */
 	@Test
 	public void replaceTxtByStrTest() {
-		String path = "E:/NoodlesGuide/3-数据库/1-数据库系统原理/";
-		String file = "数据库系统原理.md";
+		String path = "E:/NoodlesGuide/3-数据库/4-Mysql/";
+		String file = "MySQL.md";
 		String imagePath = "image/";
 		Function<String, String> function = (line) -> {
 			if (line.contains("<img")) {

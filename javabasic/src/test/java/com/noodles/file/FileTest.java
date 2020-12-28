@@ -6,16 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
-import java.util.function.Function;
 
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.io.FileUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.junit.Test;
 
-import com.noodles.date.utils.DateUtils;
-import com.noodles.random.utils.RandomUtils;
+import com.noodles.file.utils.FileNioUtil;
 
 /**
  * @filename FileTest

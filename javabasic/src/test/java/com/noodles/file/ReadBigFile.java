@@ -1,9 +1,5 @@
 package com.noodles.file;
 
-import com.noodles.gson.JsonUtil;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.LineIterator;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 
 /**
  * 如何在不重复读取与不耗尽内存的情况下处理大文件——这为大文件的处理提供了一个有用的解决办法

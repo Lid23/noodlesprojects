@@ -1,7 +1,5 @@
 package com.noodles.encryptDecrypt.util;
 
-import com.noodles.file.FileUtil;
-
 /**
  * 功能描述：提供base64字符串与字节数组的编解码转换
  */
