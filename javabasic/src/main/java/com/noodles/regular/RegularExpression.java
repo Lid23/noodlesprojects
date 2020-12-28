@@ -152,10 +152,9 @@ public class RegularExpression{
 	 * 作者：KJ00019
 	 * 日期：2017年10月26日下午4:41:39
 	 */
-	public static void testReplacements(){
+	public static void testReplacements(String s){
 		
 		try {
-			String s = FileUtil.getStringFromFile("F:/workspace_noodles/study/javabasis/src/main/java/org/javabasis/v1/regular/RegularExpression.java");
 			Matcher mInput = Pattern.compile("/\\*!(.*)!\\*/", Pattern.DOTALL).matcher(s);
 			if(mInput.find()){
 				s = mInput.group(1);
