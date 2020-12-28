@@ -18,11 +18,11 @@ public class Fibonacci {
 	 * @author 巫威 
 	 * @date 2019-07-29 22:05 
 	 */
-	public static int fibonacci(int n){  
+	public static int fibonacci(int n){
         if(n<=2){  
             return 1;  
         }else{  
-            return fibonacci(n-1)+fibonacci(n-2);  
+            return fibonacci(n-1)+fibonacci(n-2);
         }  
     }
 	
