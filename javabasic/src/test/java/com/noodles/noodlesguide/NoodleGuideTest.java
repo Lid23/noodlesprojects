@@ -22,14 +22,6 @@ import com.noodles.random.utils.RandomUtils;
  */
 public class NoodleGuideTest {
 
-
-
-	@Test
-	public void test(){
-		System.out.println("test");
-	}
-
-
 	/**
 	 * 将笔记的图片复制到对应image目录下
 	 * @param
@@ -40,8 +32,8 @@ public class NoodleGuideTest {
 	@Test
 	public void mvImageToGuideTest() {
 		String imageSrcPath = "C:/Users/KJ00019/Desktop/Github/CS-Notes/notes/pics/";
-		String notePath = "E:/NoodlesGuide/3-数据库/4-Mysql/";
-		String file = "MySQL.md";
+		String notePath = "E:/NoodlesGuide/3-数据库/6-Redis/";
+		String file = "Redis-CSNOTE.md";
 		String imagePath = "image/";
 		Consumer<String> consumer = (line) -> {
 			if (line.contains("<img")) {
@@ -70,8 +62,8 @@ public class NoodleGuideTest {
 	 */
 	@Test
 	public void replaceTxtByStrTest() {
-		String path = "E:/NoodlesGuide/3-数据库/4-Mysql/";
-		String file = "MySQL.md";
+		String path = "E:/NoodlesGuide/3-数据库/6-Redis/";
+		String file = "Redis-CSNOTE.md";
 		String imagePath = "image/";
 		Function<String, String> function = (line) -> {
 			if (line.contains("<img")) {

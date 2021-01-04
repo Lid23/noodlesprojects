@@ -1,12 +1,10 @@
 package com.noodles.java8;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import com.noodles.gson.JsonUtil;
 import com.noodles.java8.bean.TxLnTrxBean;
-import com.noodles.utils.DateUtils;
+import com.noodles.json.utils.JsonUtils;
 import static java.util.stream.Collectors.toMap;
 
 /**
@@ -46,7 +44,7 @@ public class StreamTest {
 		//System.out.println(JsonUtil.toJson(txList.stream().collect(toMap(TxLnTrxBean::getTrxRefNo, v -> v))));
 
 		/**(v1, v2) -> v1中，如果v1与v2的key值相同，选择v1作为那个key所对应的value值*/
-		System.out.println(JsonUtil.toJson(txList.stream().collect(toMap(TxLnTrxBean::getTrxRefNo, v -> v, (v1, v2) -> v2))));
+		System.out.println(JsonUtils.toJson(txList.stream().collect(toMap(TxLnTrxBean::getTrxRefNo, v -> v, (v1, v2) -> v2))));
 
 	}
 }

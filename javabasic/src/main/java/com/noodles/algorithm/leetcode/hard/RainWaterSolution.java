@@ -1,6 +1,6 @@
 package com.noodles.algorithm.leetcode.hard;
 
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 
 /**
  * @filename RainWaterSolution
@@ -48,7 +48,7 @@ public class RainWaterSolution {
 			rain += (Math.min(leftMax[i], rightMax[i]) - height[i]) * 1;
 		}
 
-		System.out.println(JsonUtil.toJson(h));
+		System.out.println(JsonUtils.toJson(h));
 		return rain;
 	}
 

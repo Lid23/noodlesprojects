@@ -10,7 +10,7 @@ package com.noodles.algorithm.backtrack;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 
 public class Permutations {
 
@@ -21,7 +21,7 @@ public class Permutations {
 		//传入三个参数，没有附加参数
 		backtrack(list, new ArrayList<>(), nums);
 
-		System.out.println(JsonUtil.toJson(list));
+		System.out.println(JsonUtils.toJson(list));
 
 		return list;
 	}

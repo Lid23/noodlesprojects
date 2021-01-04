@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.springframework.util.CollectionUtils;
-
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 import com.noodles.utils.ArrayUtils;
 
 /**
@@ -19,10 +17,10 @@ public class HaftSearchSolution {
 
 	public static void main(String[] args) {
 		Integer[] array = ArrayUtils.getArrayInteger(10, -10, 10);
-		System.out.println(JsonUtil.toJson(array));
+		System.out.println(JsonUtils.toJson(array));
 		List<Integer> list = Arrays.asList(array);
 		Collections.sort(list);
-		System.out.println(JsonUtil.toJson(list.toArray(array)));
+		System.out.println(JsonUtils.toJson(list.toArray(array)));
 
 		System.out.println(binarySearch(list.toArray(array), 2));
 

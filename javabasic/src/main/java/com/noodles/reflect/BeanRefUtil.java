@@ -1,12 +1,16 @@
 package com.noodles.reflect;
 
-
-import com.noodles.reflect.bean.UserBean;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.noodles.reflect.bean.UserBean;
 
 /**
  * 文件名：BeanRefUtil.java
@@ -21,17 +25,12 @@ public class BeanRefUtil {
 		userBean.setName(encryptString("Eric"));
 		userBean.setAddress(encryptString("深圳"));
 		
-		PrintUtil.printObject(userBean);
-		
 		List<String> encryptFiledList = new ArrayList<String>();
 		encryptFiledList.add("name");
 		encryptFiledList.add("address");
 		encryptFiledList.add("mobileNo");
 		
 		userBean = (UserBean) decryptBeanField(userBean, encryptFiledList);
-		
-		PrintUtil.printObject(userBean);
-		
 	}
 	
 	
@@ -272,7 +271,7 @@ public class BeanRefUtil {
 	 * 判断是否存在某属性的 get方法
 	 * 
 	 * @param methods
-	 * @param fieldGetMet
+	 * @param fieldMet
 	 * @return boolean
 	 */
 	public static boolean checkMet(Method[] methods, String fieldMet) {
@@ -295,8 +294,9 @@ public class BeanRefUtil {
 			return null;
 		}
 		int startIndex = 0;
-		if (fieldName.charAt(0) == '_')
+		if (fieldName.charAt(0) == '_') {
 			startIndex = 1;
+		}
 		return "get"
 				+ fieldName.substring(startIndex, startIndex + 1).toUpperCase()
 				+ fieldName.substring(startIndex + 1);
@@ -313,8 +313,9 @@ public class BeanRefUtil {
 			return null;
 		}
 		int startIndex = 0;
-		if (fieldName.charAt(0) == '_')
+		if (fieldName.charAt(0) == '_') {
 			startIndex = 1;
+		}
 		return "set"
 				+ fieldName.substring(startIndex, startIndex + 1).toUpperCase()
 				+ fieldName.substring(startIndex + 1);

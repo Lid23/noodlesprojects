@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 
 /**
  * @filename FullyArrangedByRecursive
@@ -18,7 +18,7 @@ public class FullyArrangedByRecursive {
 
 		char[] arr = {'a', 'b', 'c'};
 		List<String> result = fullyArranged(arr, 0);
-		System.out.println(JsonUtil.toJson(result));
+		System.out.println(JsonUtils.toJson(result));
 
 	}
 

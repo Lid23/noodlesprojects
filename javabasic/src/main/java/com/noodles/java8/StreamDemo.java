@@ -12,10 +12,10 @@ import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.noodles.gson.JsonUtil;
 import com.noodles.java8.bean.Dish;
 import com.noodles.java8.bean.Trader;
 import com.noodles.java8.bean.Transaction;
+import com.noodles.json.utils.JsonUtils;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
@@ -64,13 +64,13 @@ public class StreamDemo {
 		List<Integer> numbers2 = Arrays.asList(3, 4);
 		List<Integer[]> pairs = numbers1.stream().flatMap(i -> numbers2.stream().map(j -> new Integer[] { i, j }))
 				.collect(toList());
-		System.out.println(JsonUtil.toJson(pairs));
+		System.out.println(JsonUtils.toJson(pairs));
 
 		/**只需要总和是否能被3整除的数对*/
 		List<Integer[]> pairs1 = numbers1.stream()
 				.flatMap(i -> numbers2.stream().filter(j -> (i + j) % 3 == 0).map(j -> new Integer[] { i, j }))
 				.collect(toList());
-		System.out.println(JsonUtil.toJson(pairs1));
+		System.out.println(JsonUtils.toJson(pairs1));
 
 		/**anyMatch检查菜单中是否有素食可以选择*/
 		if (Dish.menu.stream().anyMatch(Dish::isVegetarian)) {

@@ -1,11 +1,11 @@
 package com.noodles.problemcodes;
 
-import com.noodles.gson.JsonUtil;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
+
+import com.noodles.json.utils.JsonUtils;
 
 /**
  * @program: noodles-projects
@@ -24,7 +24,7 @@ public class ConcurrentModifactionExceptionDemos {
 
         //迭代器去除元素
         rightCode(integerList, (i) -> i == 2);
-        System.out.println(JsonUtil.toJson(integerList));
+        System.out.println(JsonUtils.toJson(integerList));
 
 
 

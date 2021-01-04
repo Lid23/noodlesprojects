@@ -3,7 +3,7 @@ package com.noodles.algorithm.leetcode.easy;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 
 /**
  * @filename TwoSum
@@ -17,9 +17,9 @@ public class TwoSum {
 	static int target = 9;
 
 	public static void main(String[] args) {
-		System.out.println(JsonUtil.toJson(twoSum1(array, 9)));
-		System.out.println(JsonUtil.toJson(twoSum2(array, 9)));
-		System.out.println(JsonUtil.toJson(twoSum3(array, 9)));
+		System.out.println(JsonUtils.toJson(twoSum1(array, 9)));
+		System.out.println(JsonUtils.toJson(twoSum2(array, 9)));
+		System.out.println(JsonUtils.toJson(twoSum3(array, 9)));
 	}
 
 	/**
