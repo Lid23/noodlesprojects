@@ -3,7 +3,7 @@ package com.noodles.algorithm;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 
 /**
  * @filename PrintListFromTailToHead
@@ -21,13 +21,13 @@ public class PrintListFromTailToHead {
 		Node<Integer> node1 = new Node<>(1, node2);
 
 		ArrayList<Integer> arrayList1 = printListFromTailToHead1(node1);
-		System.out.println(JsonUtil.toJson(arrayList1));
+		System.out.println(JsonUtils.toJson(arrayList1));
 
 		ArrayList<Integer> arrayList2 = printListFromTailToHead1(node1);
-		System.out.println(JsonUtil.toJson(arrayList2));
+		System.out.println(JsonUtils.toJson(arrayList2));
 
 		ArrayList<Integer> arrayList3 = printListFromTailToHead3(node1);
-		System.out.println(JsonUtil.toJson(arrayList3));
+		System.out.println(JsonUtils.toJson(arrayList3));
 	}
 
 	/**

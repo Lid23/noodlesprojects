@@ -21,12 +21,12 @@ public class CountDownLatchExample {
 
 		for (int i = 0; i < totalThread; i++) {
 			executorService.execute(() -> {
-				System.out.print("run...");
+				System.out.println(Thread.currentThread().getName() + "...run...");
 				countDownLatch.countDown();
 			});
 		}
 
-		countDownLatch.await();;
+		countDownLatch.await();
 		System.out.println("end");
 		executorService.shutdown();
 	}

@@ -2,7 +2,7 @@ package com.noodles.tree;
 
 import com.noodles.datastructure.tree.BiTree;
 import com.noodles.datastructure.tree.BiTreeNode;
-import com.noodles.gson.JsonUtil;
+import com.noodles.json.utils.JsonUtils;
 
 /**
  * @filename BiTree
@@ -66,21 +66,20 @@ public class BiTreeTest<E> {
 		biTree.levelTRaverse();
 
 		System.out.println();
-		BiTreeNode<String> searchNode =  biTree.searchNode(root, "+");
-		System.out.println(JsonUtil.toJson(searchNode));
+		BiTreeNode<String> searchNode = biTree.searchNode(root, "+");
+		System.out.println(JsonUtils.toJson(searchNode));
 
 		System.out.println("递归遍历树的结点数量：" + biTree.countNode(root));
 		System.out.println("层次遍历树的结点数量：" + biTree.countNode1(root));
 		System.out.println("树的深度：" + biTree.getDepth(root));
 
 		System.out.println("根据先序和中序序列建立一颗二叉树");
-		String[] preOrder = new String[]{"A","B","D","E","G","C","F","H"};
-		String[] inOrder = new String[]{"D","B","G","E","A","F","H","C"};
+		String[] preOrder = new String[] { "A", "B", "D", "E", "G", "C", "F", "H" };
+		String[] inOrder = new String[] { "D", "B", "G", "E", "A", "F", "H", "C" };
 		BiTree<String> biTree1 = new BiTree<>(preOrder, inOrder, 0, 0, preOrder.length);
-		System.out.println(JsonUtil.toJson(biTree1));
+		System.out.println(JsonUtils.toJson(biTree1));
 		System.out.print("建立的二叉树的后序遍历为：");
 		biTree1.postRootTraverse();
 	}
-
 
 }

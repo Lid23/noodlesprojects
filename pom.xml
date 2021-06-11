@@ -16,6 +16,8 @@
         <module>netty-demo</module>
         <module>jvm7-action</module>
         <module>java-algorithm</module>
+        <module>java-pdf</module>
+        <module>java-jdbc</module>
     </modules>
 
 

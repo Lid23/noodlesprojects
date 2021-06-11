@@ -1,12 +1,12 @@
 package com.noodles.canal;
 
+import java.net.InetSocketAddress;
+import java.util.List;
+
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
-
-import java.net.InetSocketAddress;
-import java.util.List;
 
 
 /**
